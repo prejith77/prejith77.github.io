@@ -444,9 +444,9 @@ section{position:relative}
     <div class="ch-side">
       <span class="ch-num">03 / 05</span>
       <h2 id="c3" data-split>Build the range</h2>
-      <p class="rule rv">Every product line should earn the cash it ties up.</p>
-      <p class="how rv">You have 100 to spend on stock. Choose the lines you would carry and watch the numbers above change as you go. Lock it in when you are happy.</p>
-      <div class="why rv"><small>Why it matters to you</small><p>Cash stuck in slow stock cannot pay suppliers or fund the lines that sell. I review the range regularly and cut what is not paying its way.</p></div>
+      <p class="rule rv">Every item should earn the cash it ties up.</p>
+      <p class="how rv">You have 100 to spend on stock. Choose the items you would carry and watch the numbers above change as you go. Lock it in when you are happy.</p>
+      <div class="why rv"><small>Why it matters to you</small><p>Cash stuck in slow stock cannot pay suppliers or fund the items that sell. I review the range regularly and cut what is not paying its way.</p></div>
     </div>
     <div class="panel rv" id="rg">
       <div class="dash">
@@ -507,7 +507,7 @@ section{position:relative}
     <ol>
       <li class="rv"><b>Lower real cost</b><span>I compare suppliers on the full cost to the shelf, not just the quoted price.</span></li>
       <li class="rv"><b>Better supplier deals</b><span>I trade things suppliers value for a better price, and keep the relationship in good shape.</span></li>
-      <li class="rv"><b>Cash kept moving</b><span>Less money sitting in slow stock and more available for the lines that sell.</span></li>
+      <li class="rv"><b>Cash kept moving</b><span>Less money sitting in slow stock and more available for the items that sell.</span></li>
       <li class="rv"><b>Forecasts you can explain</b><span>Built from real demand and checked every cycle, so each order has a reason behind it.</span></li>
       <li class="rv"><b>Steady decisions</b><span>When something goes wrong, I deal with what affects customers first and keep the cost of fixing it sensible.</span></li>
     </ol>
@@ -579,7 +579,7 @@ section{position:relative}
   (function(){
     const L=[
       {k:'vol',t:'Commit to a year of volume',cut:.06,mood:1,say:'Could we agree a year of steady orders, if the price reflects it?',re:'A full year of orders helps us plan production. We can move on price for that.'},
-      {k:'bundle',t:'Add a second product line',cut:.035,mood:1,say:'If we add your filters to the same order, what can you do?',re:'Two lines on one order makes it worth our while. We will sharpen the price.'},
+      {k:'bundle',t:'Add more items to the order',cut:.035,mood:1,say:'If we add your filters to the same order, what can you do?',re:'More items on one order makes it worth our while. We will sharpen the price.'},
       {k:'lead',t:'Accept a longer lead time',cut:.03,mood:1,say:'We can plan ahead. Could you fit us into your quieter weeks?',re:'If we can slot you into quieter weeks, our costs come down, and so does yours.'},
       {k:'pay',t:'Offer to pay on delivery',cut:.025,mood:1,pay:'On delivery',say:'We could pay on delivery instead of at 60 days.',re:'Faster payment helps our cash flow. We will reflect that in the price.'},
       {k:'rival',t:'Show a competing quote',cut:.04,mood:-1,say:'We have a quote from another factory at a lower price.',re:'We know that factory. We will match part of it, but we would rather win on service.'},
@@ -614,7 +614,7 @@ section{position:relative}
       {n:'Wiper blades',c:10,p:1.6,v:6,r:'med',d:'Mostly sells in the rainy weeks'},
       {n:'Shock absorbers',c:30,p:3.0,v:9,r:'med',d:'High value, sells slowly'},
       {n:'New premium brand',c:26,p:3.2,v:6,r:'high',d:'High margin, demand unproven'},
-      {n:'Line hit by new duty',c:20,p:1.0,v:7,r:'high',d:'Costs just went up, buyers hesitating'}];
+      {n:'Items hit by new duty',c:20,p:1.0,v:7,r:'high',d:'Costs just went up, buyers hesitating'}];
     const RP={low:0,med:2,high:7},B=100;
     const sel=new Set(),cards=$('#rgCards'),out=$('#rgOut');
     const stats=s=>{let c=0,p=0,v=0,r=0;s.forEach(i=>{c+=P[i].c;p+=P[i].p;v+=P[i].v;r+=RP[P[i].r];});return{c,p,v:Math.min(100,v),r,score:p*10+Math.min(100,v)*.6-r*2.2};};
@@ -628,7 +628,7 @@ section{position:relative}
     $('#rgReset').addEventListener('click',()=>{sel.clear();render();draw();out.innerHTML='';});
     $('#rgLock').addEventListener('click',()=>{const st=stats([...sel]);const pct=Math.max(0,Math.round(st.score/best.st.score*100));
       const names=best.s.map(i=>P[i].n).join(', ');
-      out.innerHTML='<div class="result fade-in"><p class="big">Your range scores <em><span data-count="'+pct+'">0</span>%</em> of the strongest mix.</p><p>The strongest mix here is '+names+'. It spends '+best.st.c+' of the 100, earns '+best.st.p.toFixed(1)+' a month and serves '+best.st.v+'% of customers. It leaves out the lines that tie up the most cash for the least return.</p><p>At work I ask the same question of every line, whether it earns the cash it ties up.</p></div>';if(window.countUp)countUp(out);});
+      out.innerHTML='<div class="result fade-in"><p class="big">Your range scores <em><span data-count="'+pct+'">0</span>%</em> of the strongest mix.</p><p>The strongest mix here is '+names+'. It spends '+best.st.c+' of the 100, earns '+best.st.p.toFixed(1)+' a month and serves '+best.st.v+'% of customers. It leaves out the items that tie up the most cash for the least return.</p><p>At work I ask the same question of every item, whether it earns the cash it ties up.</p></div>';if(window.countUp)countUp(out);});
     render();draw();
   })();
 
@@ -670,12 +670,12 @@ section{position:relative}
     const K=[['cash','Cash'],['service','Customers served'],['margin','Margin'],['rel','Supplier goodwill']];
     const EV=[
       {w:'Month 1',t:'A port delay adds ten days to your main shipment. Fast movers will run out first.',o:[
-        ['Air-freight a small top-up of the fast movers',{cash:-8,service:0,margin:-2,rel:0},'Customers barely noticed. It cost a little, but only on the lines that matter.',1],
+        ['Air-freight a small top-up of the fast movers',{cash:-8,service:0,margin:-2,rel:0},'Customers barely noticed. It cost a little, but only on the items that matter.',1],
         ['Wait for the ship',{cash:0,service:-18,margin:0,rel:0},'Cash stayed put, but customers went elsewhere for two weeks.'],
         ['Air-freight the whole order',{cash:-25,service:0,margin:-8,rel:0},'Nobody waited, but the air freight bill ate the margin.']]},
-      {w:'Month 2',t:'A new import duty lands on one of your product lines.',o:[
-        ['Raise prices on that line',{cash:0,service:-6,margin:0,rel:0},'You kept the margin, but some buyers moved to cheaper alternatives.'],
-        ['Move that line to a supplier from a country the duty does not cover',{cash:-4,service:0,margin:4,rel:-4},'It took effort to set up a new supplier, but the line stays competitive.',1],
+      {w:'Month 2',t:'A new import duty lands on some of your items.',o:[
+        ['Raise prices on those items',{cash:0,service:-6,margin:0,rel:0},'You kept the margin, but some buyers moved to cheaper alternatives.'],
+        ['Move those items to a supplier from a country the duty does not cover',{cash:-4,service:0,margin:4,rel:-4},'It took effort to set up a new supplier, but the items stay competitive.',1],
         ['Absorb the extra cost',{cash:0,service:0,margin:-7,rel:0},'Customers were happy, and the margin quietly shrank.']]},
       {w:'Month 3',t:'A supplier offers 8% off if you take double your usual quantity.',o:[
         ['Take double the quantity',{cash:-30,service:0,margin:5,rel:3},'Cheaper per unit, but half of it sat on the shelf for months.'],
