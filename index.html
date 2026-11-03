@@ -11,7 +11,7 @@
 <meta property="og:title" content="Prejith Varghese Ponnachan | Demand Planning and Procurement">
 <meta property="og:description" content="Demand planning and procurement for a multi-brand automotive parts distributor.">
 <meta property="og:url" content="https://prejith77.github.io/">
-<meta property="og:image" content="https://prejith77.github.io/og-image.png">
+<meta property="og:image" content="https://prejith77.github.io/og-image.png?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -238,7 +238,7 @@ section{position:relative}
 .acc .sub b{color:var(--text);font-weight:500}
 @keyframes open{from{opacity:0;transform:translateY(-8px)}}
 .early-btn{margin-top:28px}
-@media (max-width:980px){.acc summary,.acc .body{grid-template-columns:1fr 44px}.acc .when{grid-column:1/-1;order:-1}.acc .body>div{grid-column:1}}
+@media (max-width:980px){.acc summary{grid-template-columns:1fr 44px;padding:22px 20px}.acc .body{grid-template-columns:1fr;padding:0 20px 26px}.acc .when{grid-column:1/-1;order:-1}.acc .body>div{grid-column:1}.acc .body .learnt{font-size:var(--fs-lead)}}
 
 /* ---------- credentials ---------- */
 .cred{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px);margin-top:64px}
@@ -427,7 +427,7 @@ main{position:relative;z-index:1;background:var(--bg);border-radius:0 0 32px 32p
 .site-list li::before{content:'';position:absolute;left:0;top:.6em;width:10px;height:2px;background:var(--gold2)}
 .site-txt .site-meta{margin-top:-8px;color:var(--dim);font-size:var(--fs-sm)}
 .site-txt .site-credit{font-size:var(--fs-sm);color:var(--dim)}
-.site-txt .btn{align-self:flex-start}
+.site-acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
 @media (max-width:900px){.site-card{grid-template-columns:1fr;margin-top:40px}.site-txt{padding:4px 4px 8px}}
 /* on a phone the intro sits under the heading, not squeezed beside it */
 @media (max-width:980px){.head-row{grid-template-columns:1fr;gap:0}.head-row .lede{max-width:none!important}}
@@ -463,7 +463,7 @@ main{position:relative;z-index:1;background:var(--bg);border-radius:0 0 32px 32p
 <section class="hero" id="top" aria-labelledby="h1">
   <div class="wrap">
     <h1 id="h1" class="hname" aria-label="Prejith Varghese Ponnachan">
-      <span class="ln l1" aria-hidden="true"><span><span class="w1">Prejith<span class="pic"><img src="portrait.webp" width="1100" height="1100" alt=""></span></span><span class="w2">Varghese</span></span></span>
+      <span class="ln l1" aria-hidden="true"><span><span class="w1">Prejith<span class="pic"><img src="portrait-480.webp" srcset="portrait-480.webp 480w, portrait.webp 1100w" sizes="(min-width:1600px) 300px, 200px" width="480" height="480" alt="" fetchpriority="high"></span></span><span class="w2">Varghese</span></span></span>
       <span class="ln l2" aria-hidden="true"><span>Ponnachan</span></span>
     </h1>
     <div class="hfoot">
@@ -539,7 +539,7 @@ main{position:relative;z-index:1;background:var(--bg);border-radius:0 0 32px 32p
           <li>Hacking fights, fan votes and predictions, every fact sourced</li>
         </ul>
         <p class="site-credit">Designed and directed by me.</p>
-        <a class="btn btn-primary" href="https://doomsday-dossier.github.io/doomsday-dossier/" target="_blank" rel="noopener">Visit the site</a>
+        <div class="site-acts"><a class="btn btn-primary" href="https://doomsday-dossier.github.io/doomsday-dossier/" target="_blank" rel="noopener">Visit the site</a><a class="btn btn-secondary" href="mailto:prejith.ponnachan1@outlook.com?subject=A%20website%20for%20my%20business&amp;body=Hi%20Prejith%2C%0A%0AI%20would%20like%20to%20talk%20about%20a%20website.%0A%0ABusiness%3A%20%0AWhat%20it%20should%20do%3A%20">Ask about a website</a></div>
       </div>
     </article>
   </div>
