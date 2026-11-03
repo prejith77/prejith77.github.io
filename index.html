@@ -278,25 +278,49 @@ section{position:relative}
 .c-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
 @media (max-width:980px){.c-row{grid-template-columns:1fr}}
 
-/* ---------- how I work ---------- */
-.steps{position:relative;margin-top:80px;padding-top:44px}
-.steps ol{display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
-.steps::before{content:"";position:absolute;left:0;right:0;top:-.5px;height:2px;background:var(--bg3)}
-.steps .fill{position:absolute;left:0;top:-.5px;height:2px;width:calc(var(--p,0) * 100%);background:var(--gold)}
-.steps li{position:relative;opacity:.35;transform:translateY(16px);transition:opacity .7s,transform .9s cubic-bezier(.16,1,.3,1)}
-.steps li::before{content:"";position:absolute;top:-50px;left:0;width:12px;height:12px;border-radius:50%;background:var(--bg3);transition:background .4s}
-.steps li.on{opacity:1;transform:none}
-.steps li.on::before{background:var(--gold)}
-.steps h3{font:600 var(--fs-h3)/1 var(--sans);letter-spacing:-.03em;text-transform:uppercase;margin:0 0 16px}
-.steps p{color:var(--text2);max-width:30ch}
-@media (max-width:980px){
-  .steps{padding:0 0 0 40px;margin-top:56px}
-  .steps ol{grid-template-columns:1fr;gap:44px}
-  .steps::before{left:5px;right:auto;top:0;bottom:0;width:1px;height:auto}
-  .steps .fill{left:5px;top:0;width:2px;height:calc(var(--p,0) * 100%)}
-  .steps li::before{top:6px;left:-40px}
-}
-@media (prefers-reduced-motion:reduce){.steps li{opacity:1;transform:none}}
+/* ---------- how I work: the order's journey, held on screen while it plays ---------- */
+.journey{margin-top:72px}
+.j-route{position:relative;display:grid;grid-template-columns:repeat(4,1fr);padding-top:26px;font:600 var(--fs-body) var(--sans);color:var(--dim)}
+.j-route::before,.j-fill{content:"";position:absolute;left:0;top:0;height:2px;background:var(--bg3);right:0}
+.j-fill{right:auto;width:calc(var(--p,0) * 100%);background:var(--gold);z-index:1}
+.j-route span{position:relative;transition:color .4s}
+.j-route span::before{content:"";position:absolute;left:0;top:-31px;width:12px;height:12px;border-radius:50%;background:var(--bg3);z-index:2;transition:background .4s}
+.j-route span.on{color:var(--text)}
+.j-route span.on::before{background:var(--gold)}
+.j-steps{display:grid;gap:96px;margin-top:56px}
+.j-step{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,5vw,96px);align-items:center}
+.j-txt h3{font:700 clamp(3.4rem,9vw,9rem)/.86 var(--sans);letter-spacing:-.04em;text-transform:uppercase}
+.j-txt p{margin-top:24px;font:500 var(--fs-statement)/1.38 var(--sans);letter-spacing:-.015em;color:var(--text2);max-width:26ch}
+.viz.j-art{position:static;inset:auto;width:100%;height:auto;max-height:none;margin:0;z-index:auto}
+.viz .bar{fill:rgba(237,233,226,.05);stroke:rgba(237,233,226,.2)}
+.viz .fc-dash{stroke:var(--gold2);stroke-width:2;stroke-dasharray:6 7;transition:opacity .8s calc(var(--d,0) * 1ms + 300ms)}
+.viz .card{fill:rgba(237,233,226,.03);stroke:rgba(237,233,226,.22)}
+.viz .card.pick{stroke:var(--gold2);fill:rgba(201,162,74,.1);stroke-width:1.6}
+.viz .route{stroke:var(--gold2);stroke-width:1.6}
+.viz .port{fill:var(--bg);stroke:rgba(237,233,226,.6)}
+.viz .port.g{stroke:var(--gold2);fill:var(--gold)}
+.viz .hull{fill:var(--text);stroke:none}
+.viz .box{fill:var(--bg3);stroke:rgba(237,233,226,.5);stroke-width:1.2}
+.viz .box.g{fill:var(--gold);stroke:var(--gold2)}
+.viz .vessel{transition:opacity .6s .6s}
+.viz .box2{fill:rgba(237,233,226,.05);stroke:rgba(237,233,226,.35)}
+.js .j-step:not(.on) .viz .d{stroke-dashoffset:1}
+.js .j-step:not(.on) .viz .pop{opacity:0;transform:scale(.6)}
+.js .j-step:not(.on) .viz .fc-dash,.js .j-step:not(.on) .viz .vessel{opacity:0}
+/* desktop: the stage holds still and the steps play one after another */
+.journey.pinned{height:440vh;margin-top:24px}
+.journey.pinned .j-stage{position:sticky;top:0;height:100svh;display:flex;align-items:center}
+.journey.pinned .j-in{width:100%}
+.journey.pinned .j-steps{display:grid;margin-top:clamp(40px,7vh,72px)}
+.journey.pinned .j-step{grid-area:1/1;visibility:hidden;transition:visibility 0s .5s}
+.journey.pinned .j-step.on{visibility:visible;transition:none}
+.journey.pinned .j-txt>*{opacity:0;transform:translateY(36px);transition:opacity .5s,transform .8s cubic-bezier(.16,1,.3,1)}
+.journey.pinned .j-step.on .j-txt>*{opacity:1;transform:none}
+.journey.pinned .j-step.on .j-txt p{transition-delay:.08s}
+.journey.pinned .viz.j-art{max-height:min(58vh,540px)}
+.journey:not(.pinned) .j-route{display:none}
+@media (max-width:700px){.viz.j-art .lab{font-size:24px}}
+@media (max-width:980px){.journey{margin-top:40px}.j-steps{gap:64px;margin-top:0}.j-step{grid-template-columns:1fr;gap:24px}.j-txt h3{font-size:var(--fs-h2)}}
 
 /* ---------- case studies ---------- */
 .case-btn{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;margin-top:36px;background:none;border:0;padding:0;color:var(--text);font:500 var(--fs-body) var(--sans);text-decoration:underline;text-decoration-color:rgba(237,233,226,.35);text-underline-offset:7px;cursor:pointer;transition:text-decoration-color .3s}
@@ -413,7 +437,39 @@ main{position:relative;z-index:1;background:var(--bg);border-radius:0 0 32px 32p
 
 
 
-@media (min-width:981px){.svc,.tiles{margin-left:-28px;margin-right:-28px}.acc{margin-left:-24px;margin-right:-24px}}
+@media (min-width:981px){.svc,.tiles{margin-left:-28px;margin-right:-28px}.acc,.tl{margin-left:-24px;margin-right:-24px}}
+/* experience timeline: each role as a bar on one line of time */
+.tl{margin-top:56px;padding:clamp(24px,3vw,40px);border-radius:28px;background:var(--bg2)}
+.tl-rows{display:grid;gap:10px}
+.tl-row{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:24px;align-items:center}
+.tl-lab{font-size:var(--fs-sm);color:var(--dim);line-height:1.35}
+.tl-lab b{display:block;font:600 var(--fs-body)/1.3 var(--sans);color:var(--text)}
+.tl-track{position:relative;height:14px;border-radius:7px;background:rgba(237,233,226,.04)}
+.tl-bar{position:absolute;top:0;bottom:0;left:calc(var(--a) * 100%);width:max(10px,calc((var(--b) - var(--a)) * 100%));border-radius:7px;background:rgba(237,233,226,.38);transform-origin:left;transition:transform 1.1s cubic-bezier(.16,1,.3,1) calc(var(--i) * 70ms + 200ms)}
+.tl-row.now .tl-bar{background:var(--gold2)}
+.tl-row.now .tl-lab b{color:var(--gold2)}
+.js .tl:not(.in) .tl-bar{transform:scaleX(0)}
+.tl-axis{margin-top:14px}
+.tl-yrs{position:relative;height:20px;font-size:var(--fs-sm);color:var(--dim)}
+.tl-yrs span{position:absolute;left:calc(var(--x) * 100%);transform:translateX(-50%)}
+@media (max-width:700px){.tl-row{grid-template-columns:1fr;gap:6px}.tl-rows{gap:16px}.tl-axis>span:first-child{display:none}}
+@media (prefers-reduced-motion:reduce){.tl-bar{transition:none}.js .tl:not(.in) .tl-bar{transform:none}}
+/* colour fields: two sections change the whole ground */
+.field-ivory{background:var(--text);color:var(--bg)}
+.field-ivory .svc p{color:#4A4453}
+.field-ivory .svc li::before{background:#E2DDD4}
+.field-ivory .svc li:hover h3{color:#7A5A12}
+.field-ivory ::selection{background:var(--bg);color:var(--text)}
+.field-ivory + .sec{padding-top:var(--pad)!important}
+.contact.field-gold{background:var(--gold2);color:var(--bg);border-radius:0 0 32px 32px}
+.field-gold .talk .roll>span::after{color:#5C4512}
+.field-gold .c-row p{color:#3B2F15}
+.field-gold .btn-primary{background:var(--bg);color:var(--text)}
+.field-gold .btn-primary:hover{background:#2A2418}
+.field-gold .btn-primary::after{background:var(--gold2);color:var(--bg)}
+.field-gold .btn-secondary{background:rgba(10,9,13,.1);color:var(--bg)}
+.field-gold .btn-secondary:hover{background:rgba(10,9,13,.18)}
+.field-gold :focus-visible{outline-color:var(--bg)}
 /* websites I've made: one showcase card per site, the screenshot as the way in */
 .site-card{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;margin-top:64px;padding:clamp(16px,2vw,24px);border-radius:28px;background:var(--bg2)}
 .site-shot{display:block;border-radius:18px;overflow:hidden;aspect-ratio:16/10;background:#020504}
@@ -479,16 +535,23 @@ main{position:relative;z-index:1;background:var(--bg);border-radius:0 0 32px 32p
       <h2 class="h2" id="how-h" data-split>From enquiry to warehouse</h2>
       <p class="lede rv" style="max-width:40ch">Every order is tracked from enquiry until the goods are checked into the warehouse, and every decision can be explained.</p>
     </div>
-    <div class="steps" id="steps"><ol>
-      <li><h3>Plan</h3><p>Read real demand and decide what the range needs, and how much of it.</p></li>
-      <li><h3>Buy</h3><p>Compare quotes, negotiate on price and check every order item by item before it is signed.</p></li>
-      <li><h3>Ship</h3><p>Book the freight, follow it, and have the customs paperwork ready before the goods land.</p></li>
-      <li><h3>Receive</h3><p>Clear the goods, check them into the warehouse and match them back to the order.</p></li>
-    </ol><span class="fill" aria-hidden="true"></span></div>
+  </div>
+  <div class="journey" id="journey">
+    <div class="j-stage">
+      <div class="wrap j-in">
+        <div class="j-route" aria-hidden="true"><i class="j-fill"></i><span>Plan</span><span>Buy</span><span>Ship</span><span>Receive</span></div>
+        <ol class="j-steps">
+      <li class="j-step"><div class="j-txt"><h3>Plan</h3><p>Read real demand and decide what the range needs, and how much of it.</p></div><svg class="viz j-art" viewBox="0 0 560 400" fill="none" aria-hidden="true" focusable="false"><path pathLength="1" class="d dim" style="--d:0" d="M40 330 H520"/><rect class="pop bar" style="--d:0" x="52" y="210" width="24" height="120" rx="4"/><rect class="pop bar" style="--d:60" x="90" y="180" width="24" height="150" rx="4"/><rect class="pop bar" style="--d:120" x="128" y="220" width="24" height="110" rx="4"/><rect class="pop bar" style="--d:180" x="166" y="160" width="24" height="170" rx="4"/><rect class="pop bar" style="--d:240" x="204" y="140" width="24" height="190" rx="4"/><rect class="pop bar" style="--d:300" x="242" y="170" width="24" height="160" rx="4"/><rect class="pop bar" style="--d:360" x="280" y="120" width="24" height="210" rx="4"/><rect class="pop bar" style="--d:420" x="318" y="130" width="24" height="200" rx="4"/><rect class="pop bar" style="--d:480" x="356" y="150" width="24" height="180" rx="4"/><rect class="pop bar" style="--d:540" x="394" y="100" width="24" height="230" rx="4"/><rect class="pop bar" style="--d:600" x="432" y="80" width="24" height="250" rx="4"/><rect class="pop bar" style="--d:660" x="470" y="110" width="24" height="220" rx="4"/><path pathLength="1" class="d" style="--d:700" d="M64 196 L102 166 L140 206 L178 146 L216 126 L254 156 L292 106 L330 116 L368 136"/><path class="fc-dash" style="--d:1500" d="M368 136 L406 86 L444 66 L482 96"/><circle class="pop end" style="--d:1500" cx="368" cy="136" r="5"/><text class="pop lab g" style="--d:1700" x="400" y="70">Next quarter</text><text class="pop lab" style="--d:1800" x="40" y="376">Demand, month by month</text></svg></li>
+      <li class="j-step"><div class="j-txt"><h3>Buy</h3><p>Compare quotes, negotiate on price and check every order item by item before it is signed.</p></div><svg class="viz j-art" viewBox="0 0 560 400" fill="none" aria-hidden="true" focusable="false"><rect class="pop card" style="--d:0" x="40" y="60" width="140" height="230" rx="14"/><path pathLength="1" class="d" style="--d:300" d="M60 104 H130"/><path pathLength="1" class="d dim" style="--d:420" d="M60 150 H156"/><path pathLength="1" class="d dim" style="--d:480" d="M60 178 H140"/><path pathLength="1" class="d dim" style="--d:540" d="M60 206 H160"/><path pathLength="1" class="d dim" style="--d:600" d="M60 234 H124"/><rect class="pop card pick" style="--d:140" x="210" y="60" width="140" height="230" rx="14"/><path pathLength="1" class="d" style="--d:440" d="M230 104 H282"/><path pathLength="1" class="d dim" style="--d:560" d="M230 150 H326"/><path pathLength="1" class="d dim" style="--d:620" d="M230 178 H310"/><path pathLength="1" class="d dim" style="--d:680" d="M230 206 H330"/><path pathLength="1" class="d dim" style="--d:740" d="M230 234 H294"/><rect class="pop card" style="--d:280" x="380" y="60" width="140" height="230" rx="14"/><path pathLength="1" class="d" style="--d:580" d="M400 104 H462"/><path pathLength="1" class="d dim" style="--d:700" d="M400 150 H496"/><path pathLength="1" class="d dim" style="--d:760" d="M400 178 H480"/><path pathLength="1" class="d dim" style="--d:820" d="M400 206 H500"/><path pathLength="1" class="d dim" style="--d:880" d="M400 234 H464"/><path pathLength="1" class="d g" style="--d:1200" d="M262 274 L274 286 L296 260"/><text class="pop lab g" style="--d:1350" x="252" y="40">Chosen</text><text class="pop lab" style="--d:1500" x="40" y="376">Three quotes, one order</text></svg></li>
+      <li class="j-step"><div class="j-txt"><h3>Ship</h3><p>Book the freight, follow it, and have the customs paperwork ready before the goods land.</p></div><svg class="viz j-art" viewBox="0 0 560 400" fill="none" aria-hidden="true" focusable="false"><path pathLength="1" class="d dim" style="--d:0" d="M20 300 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0"/><path pathLength="1" class="d dim" style="--d:120" d="M46 320 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0"/><path pathLength="1" class="d dim" style="--d:240" d="M72 340 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0 q14 -8 28 0"/><path pathLength="1" class="d route" style="--d:300" id="jRoute" d="M70 250 C190 226 370 274 490 250"/><circle class="pop port" style="--d:200" cx="70" cy="250" r="7"/><circle class="pop port g" style="--d:900" cx="490" cy="250" r="7"/><text class="pop lab" style="--d:300" x="44" y="282">Supplier</text><text class="pop lab g" style="--d:1000" x="456" y="282">Muscat</text><g class="vessel" id="jShip" transform="translate(70 250)"><g transform="translate(0 -12)"><path class="hull" d="M-38 0 H38 L28 16 H-28 Z"/><rect class="box" x="-30" y="-14" width="18" height="14" rx="2"/><rect class="box g" x="-10" y="-14" width="18" height="14" rx="2"/><rect class="box" x="10" y="-14" width="18" height="14" rx="2"/><rect class="box" x="-20" y="-28" width="18" height="14" rx="2"/><rect class="box" x="0" y="-28" width="18" height="14" rx="2"/></g></g><text class="pop lab" style="--d:1200" x="40" y="376">Booked, followed, cleared</text></svg></li>
+      <li class="j-step"><div class="j-txt"><h3>Receive</h3><p>Clear the goods, check them into the warehouse and match them back to the order.</p></div><svg class="viz j-art" viewBox="0 0 560 400" fill="none" aria-hidden="true" focusable="false"><path pathLength="1" class="d dim" style="--d:0" d="M70 60 V330 M490 60 V330"/><path pathLength="1" class="d" style="--d:150" d="M70 130 H490"/><path pathLength="1" class="d" style="--d:270" d="M70 220 H490"/><path pathLength="1" class="d" style="--d:390" d="M70 310 H490"/><rect class="pop box2" style="--d:500" x="92" y="82" width="56" height="48" rx="5"/><path pathLength="1" class="d g" style="--d:1000" d="M111 105 L118 112 L130 99"/><rect class="pop box2" style="--d:570" x="172" y="82" width="56" height="48" rx="5"/><path pathLength="1" class="d g" style="--d:1070" d="M191 105 L198 112 L210 99"/><rect class="pop box2" style="--d:640" x="252" y="82" width="56" height="48" rx="5"/><path pathLength="1" class="d g" style="--d:1140" d="M271 105 L278 112 L290 99"/><rect class="pop box2" style="--d:710" x="332" y="82" width="56" height="48" rx="5"/><path pathLength="1" class="d g" style="--d:1210" d="M351 105 L358 112 L370 99"/><rect class="pop box2" style="--d:780" x="92" y="172" width="56" height="48" rx="5"/><path pathLength="1" class="d g" style="--d:1280" d="M111 195 L118 202 L130 189"/><rect class="pop box2" style="--d:850" x="172" y="172" width="56" height="48" rx="5"/><path pathLength="1" class="d g" style="--d:1350" d="M191 195 L198 202 L210 189"/><rect class="pop box2" style="--d:920" x="252" y="172" width="56" height="48" rx="5"/><path pathLength="1" class="d g" style="--d:1420" d="M271 195 L278 202 L290 189"/><rect class="pop box2" style="--d:990" x="332" y="172" width="56" height="48" rx="5"/><path pathLength="1" class="d g" style="--d:1490" d="M351 195 L358 202 L370 189"/><rect class="pop box2" style="--d:1060" x="412" y="172" width="56" height="48" rx="5"/><path pathLength="1" class="d g" style="--d:1560" d="M431 195 L438 202 L450 189"/><rect class="pop box2" style="--d:1130" x="92" y="262" width="56" height="48" rx="5"/><path pathLength="1" class="d g" style="--d:1630" d="M111 285 L118 292 L130 279"/><rect class="pop box2" style="--d:1200" x="252" y="262" width="56" height="48" rx="5"/><path pathLength="1" class="d g" style="--d:1700" d="M271 285 L278 292 L290 279"/><rect class="pop box2" style="--d:1270" x="332" y="262" width="56" height="48" rx="5"/><path pathLength="1" class="d g" style="--d:1770" d="M351 285 L358 292 L370 279"/><rect class="pop box2" style="--d:1340" x="412" y="262" width="56" height="48" rx="5"/><path pathLength="1" class="d g" style="--d:1840" d="M431 285 L438 292 L450 279"/><text class="pop lab" style="--d:1900" x="40" y="376">Checked in and matched to the order</text></svg></li>
+        </ol>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="sec" id="what" aria-labelledby="what-h" style="padding-top:0">
+<section class="sec field-ivory" id="what" aria-labelledby="what-h">
   <div class="wrap">
     <h2 class="h2" id="what-h" data-split>Five things, done properly</h2>
     <ul class="svc">
@@ -566,6 +629,10 @@ main{position:relative;z-index:1;background:var(--bg);border-radius:0 0 32px 32p
 <section class="sec" id="experience" aria-labelledby="exp-h" style="padding-top:0">
   <div class="wrap">
     <h2 class="h2" id="exp-h" data-split>Roles and what each one taught me</h2>
+    <div class="tl rv" role="img" aria-label="Timeline of roles from November 2020 to now: early internships and Kidadl in India, Coventry University and Netcom Training in the UK, marketing roles in 2023, and Product Executive in Muscat since April 2024.">
+      <ol class="tl-rows" aria-hidden="true"><li class="tl-row now" style="--a:0.569;--b:1.000;--i:0"><span class="tl-lab"><b>Product Executive</b>Muscat, Oman</span><span class="tl-track"><i class="tl-bar"></i></span></li><li class="tl-row" style="--a:0.514;--b:0.708;--i:1"><span class="tl-lab"><b>Head of Marketing and Strategy</b>Puma Performance Pathway, UK (remote)</span><span class="tl-track"><i class="tl-bar"></i></span></li><li class="tl-row" style="--a:0.444;--b:0.514;--i:2"><span class="tl-lab"><b>Marketing Consultant</b>DubSports, UK (remote)</span><span class="tl-track"><i class="tl-bar"></i></span></li><li class="tl-row" style="--a:0.500;--b:0.514;--i:3"><span class="tl-lab"><b>Digital Marketing Intern</b>The Muddy Marketer, UK (remote)</span><span class="tl-track"><i class="tl-bar"></i></span></li><li class="tl-row" style="--a:0.306;--b:0.486;--i:4"><span class="tl-lab"><b>Netcom Training</b>Birmingham, UK</span><span class="tl-track"><i class="tl-bar"></i></span></li><li class="tl-row" style="--a:0.153;--b:0.306;--i:5"><span class="tl-lab"><b>Course Representative</b>Coventry University, UK</span><span class="tl-track"><i class="tl-bar"></i></span></li><li class="tl-row" style="--a:0.028;--b:0.264;--i:6"><span class="tl-lab"><b>Digital Content Intern</b>Kidadl, India (remote)</span><span class="tl-track"><i class="tl-bar"></i></span></li><li class="tl-row" style="--a:0.000;--b:0.056;--i:7"><span class="tl-lab"><b>Early internships</b>India</span><span class="tl-track"><i class="tl-bar"></i></span></li></ol>
+      <div class="tl-row tl-axis" aria-hidden="true"><span></span><span class="tl-yrs"><span style="--x:0.028">2021</span><span style="--x:0.194">2022</span><span style="--x:0.361">2023</span><span style="--x:0.528">2024</span><span style="--x:0.694">2025</span><span style="--x:0.861">2026</span></span></div>
+    </div>
     <div class="acc">
       <details open><summary><span class="when">Apr 2024 to present</span><span class="role">Product Executive<span class="org">Multi-brand automotive parts distributor · Full-time · Muscat, Oman</span></span><span class="plus" aria-hidden="true"></span></summary><div class="body"><div><p>I plan and buy across a wide international parts range, manage suppliers and freight, clear goods through customs, look after the brand range and pricing, and report to the General Manager and CEO.</p><p class="learnt">Most mistakes start small. I try to check the details, even when there is pressure to move quickly.</p></div></div></details><details><summary><span class="when">Dec 2023 to Jan 2025</span><span class="role">Head of Marketing and Strategy<span class="org">Puma Performance Pathway · Contract · Bury St Edmunds, UK (remote)</span></span><span class="plus" aria-hidden="true"></span></summary><div class="body"><div><p>Led marketing and strategy, and built the dashboards leadership used to make decisions.</p><p class="learnt">A plan only helps if people know what to do next. I try to end every piece of work with a clear next step.</p></div></div></details><details><summary><span class="when">Jul 2023 to Nov 2023</span><span class="role">Marketing Consultant<span class="org">DubSports · Contract · Birmingham, UK (remote)</span></span><span class="plus" aria-hidden="true"></span></summary><div class="body"><div><p class="learnt">The client always knows their business better than I do. Listening first and asking questions helped far more than offering ideas early.</p></div></div></details><details><summary><span class="when">Nov 2023</span><span class="role">Digital Marketing Intern<span class="org">The Muddy Marketer · Contract · Birmingham, UK (remote)</span></span><span class="plus" aria-hidden="true"></span></summary><div class="body"><div><p class="learnt">With only a month, I learnt to ask questions early instead of guessing.</p></div></div></details><details><summary><span class="when">Sep 2022 to Sep 2023</span><span class="role">Netcom Training<span class="org">Part-time · Birmingham, UK</span></span><span class="plus" aria-hidden="true"></span></summary><div class="body"><div><p class="sub"><b>Systems Support Officer</b> · Nov 2022 to Sep 2023. Promoted from the marketing team to own the company's CRM and support the teams who used it</p><p class="sub"><b>Marketing and Social Media Officer</b> · Sep 2022 to Nov 2022</p><p class="learnt">Taking on work that others avoided taught me a lot. Improving how the CRM was used helped more than any campaign I ran.</p></div></div></details>
     </div>
@@ -602,7 +669,7 @@ main{position:relative;z-index:1;background:var(--bg);border-radius:0 0 32px 32p
   </div>
 </section>
 
-<section class="contact" id="contact" aria-labelledby="contact-h" data-mbar-hide>
+<section class="contact field-gold" id="contact" aria-labelledby="contact-h" data-mbar-hide>
   <div class="wrap">
     <h2 id="contact-h"><a class="talk" href="mailto:prejith.ponnachan1@outlook.com"><span class="roll"><span data-t="Let's talk">Let's talk</span></span></a></h2>
     <div class="c-row">
@@ -734,14 +801,24 @@ addEventListener('load',()=>{
 
 
 
-// how I work: the line fills and each step lights up as you scroll
+// how I work: on large screens the stage holds while Plan, Buy, Ship and Receive play in turn
 (function(){
-  const s=document.getElementById('steps');if(!s)return;
-  const items=[...s.querySelectorAll('li')];
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches){s.style.setProperty('--p',1);items.forEach(i=>i.classList.add('on'));return;}
-  const upd=()=>{const r=s.getBoundingClientRect(),p=Math.min(1,Math.max(0,(innerHeight*.7-r.top)/(r.height*.9)));
-    s.style.setProperty('--p',p.toFixed(3));items.forEach((it,i)=>it.classList.toggle('on',p>=i/items.length+.02||p>=.98));};
-  addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+  const j=document.getElementById('journey');if(!j)return;
+  const steps=[...j.querySelectorAll('.j-step')],stops=[...j.querySelectorAll('.j-route span')];
+  const route=document.getElementById('jRoute'),ship=document.getElementById('jShip'),len=route.getTotalLength();
+  const sail=t=>{t=Math.min(1,Math.max(0,t));const a=route.getPointAtLength(t*len),b=route.getPointAtLength(Math.min(len,t*len+1));
+    ship.setAttribute('transform','translate('+a.x.toFixed(1)+' '+a.y.toFixed(1)+') rotate('+(Math.atan2(b.y-a.y,b.x-a.x)*14).toFixed(1)+')');};
+  const wide=matchMedia('(min-width:981px)'),reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const upd=()=>{
+    if(!j.classList.contains('pinned')){steps.forEach(s=>{if(s.getBoundingClientRect().top<innerHeight*.8)s.classList.add('on')});sail(.55);return;}
+    const r=j.getBoundingClientRect(),p=Math.min(1,Math.max(0,-r.top/(r.height-innerHeight))),k=Math.min(3,Math.floor(p*4.0001));
+    j.style.setProperty('--p',p.toFixed(3));
+    steps.forEach((s,i)=>s.classList.toggle('on',i===k));stops.forEach((s,i)=>s.classList.toggle('on',i<=k));
+    sail(k<2?0:k>2?1:(p*4-2)*1.15);};
+  const mode=()=>{j.classList.toggle('pinned',wide.matches&&!reduce);if(!j.classList.contains('pinned'))steps.forEach(s=>s.classList.remove('on'));upd();};
+  // follow the real scroll position every frame, whichever scroller moved it
+  let last=-1;(function loop(){if(scrollY!==last){last=scrollY;upd();}requestAnimationFrame(loop);})();
+  addEventListener('resize',upd);wide.addEventListener('change',mode);mode();
 })();
 
 // case studies
