@@ -36,25 +36,6 @@
     });
   }
 
-  // aurora follows the mouse a little
-  const au = document.querySelector('.aurora');
-  if (au && fine && !reduce) {
-    addEventListener('pointermove', e => {
-      au.style.setProperty('--ax', (e.clientX / innerWidth - .5).toFixed(3));
-      au.style.setProperty('--ay', (e.clientY / innerHeight - .5).toFixed(3));
-    }, { passive: true });
-  }
-
-  // cursor shows a word over anything marked with data-cursor
-  const cur = document.getElementById('cur');
-  if (cur && fine && !reduce) {
-    document.addEventListener('pointerover', e => {
-      const t = e.target.closest('[data-cursor]');
-      if (t) { cur.dataset.label = t.dataset.cursor; cur.classList.add('label'); }
-      else cur.classList.remove('label');
-    });
-  }
-
   // phone menu: stagger the links
   document.querySelectorAll('#links > a').forEach((a, i) => a.style.setProperty('--n', i));
 

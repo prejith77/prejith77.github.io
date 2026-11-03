@@ -19,34 +19,6 @@
 <link rel="stylesheet" href="css/motion.css">
 <style>
 @font-face {
-  font-family: 'Instrument Serif';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url(fonts/InstrumentSerif-italic-latin-ext.woff2) format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}@font-face {
-  font-family: 'Instrument Serif';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url(fonts/InstrumentSerif-italic-latin.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}@font-face {
-  font-family: 'Instrument Serif';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(fonts/InstrumentSerif-normal-latin-ext.woff2) format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}@font-face {
-  font-family: 'Instrument Serif';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(fonts/InstrumentSerif-normal-latin.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}@font-face {
   font-family: 'Inter Tight';
   font-style: normal;
   font-weight: 400;
@@ -109,7 +81,6 @@
   --ink:#0A090D;--ink-2:#121017;--ivory:#EDE9E2;--muted:#8E8899;--gold-soft:#E3C77E;--violet-soft:#B9A3F2;
   --ok:#6FCF97;--bad:#F07167;
   --sans:"Inter Tight",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
-  --serif:"Instrument Serif",Georgia,serif;
   --pad:clamp(96px,14vw,180px);--gut:clamp(20px,4vw,56px);
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -126,9 +97,6 @@ img{max-width:100%;display:block}
 .skip{position:absolute;left:-9999px;top:12px;z-index:999;background:var(--text);color:var(--bg);padding:10px 16px;border-radius:8px}
 .skip:focus{left:12px}
 .wrap{width:100%;max-width:1480px;margin:0 auto;padding:0 var(--gut)}
-.serif{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
-.grain{position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 1s steps(5) infinite}
-@keyframes grain{20%{transform:translate(-4%,3%)}40%{transform:translate(3%,-2%)}60%{transform:translate(-2%,-4%)}80%{transform:translate(4%,2%)}}
 
 /* ---------- nav ---------- */
 .nav{position:fixed;inset:0 0 auto 0;z-index:100;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
@@ -140,13 +108,13 @@ img{max-width:100%;display:block}
 .links a{position:relative;text-decoration:none;font:500 .92rem var(--sans);padding:8px 14px;border-radius:999px;transition:background .3s}
 .links a:hover{background:rgba(237,233,226,.07)}
 .nav-right{display:flex;align-items:center;gap:18px}
-.clock{font:500 12px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.clock{font:500 14px var(--sans);color:var(--dim)}
 .clock b{color:var(--text);font-weight:500}
 .nav .cta-pill{background:var(--text);color:var(--bg);padding:10px 18px}
 .nav .cta-pill:hover{background:var(--gold2)}
-.nav-bg{position:absolute;inset:0;z-index:-1;background:rgba(10,9,13,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);opacity:0;transition:opacity .4s}
+.nav-bg{position:absolute;inset:0;z-index:-1;background:rgba(10,9,13,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);opacity:0;transition:opacity .4s}
 .nav.solid .nav-bg{opacity:1}
-.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:999px;padding:9px 18px;font:500 .9rem var(--sans);cursor:pointer}
+.menu-btn{display:none;background:var(--bg3);border:0;color:var(--text);border-radius:999px;padding:9px 18px;font:500 .9rem var(--sans);cursor:pointer}
 @media (max-width:980px){
   .links,.clock{display:none}
   .menu-btn{display:inline-block}
@@ -183,20 +151,11 @@ a:hover>.roll>span,button:hover>.roll>span,.roll-host:hover .roll>span{transform
 /* ---------- section heads ---------- */
 section{position:relative}
 .sec{padding:var(--pad) 0}
-.tag{display:flex;align-items:center;gap:14px;font:500 12px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:28px}
-.tag b{font-weight:500;color:var(--gold)}
-.tag::after{content:"";height:1px;width:64px;background:var(--line)}
 .h2{font:600 clamp(2.6rem,7vw,7.2rem)/.94 var(--sans);letter-spacing:-.035em;max-width:14ch;text-wrap:balance}
-.h2 .serif{letter-spacing:-.01em;color:var(--gold2)}
 .lede{color:var(--dim);font-size:1.08rem;max-width:52ch;margin-top:26px}
 .head-row{display:grid;grid-template-columns:1fr auto;align-items:end;gap:32px}
 
-/* ---------- cursor ---------- */
-.cur{position:fixed;left:0;top:0;z-index:150;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--text);mix-blend-mode:difference;pointer-events:none;transition:width .35s,height .35s,margin .35s;display:none}
-.fine .cur{display:block}
-.cur.big{width:64px;height:64px;margin:-32px 0 0 -32px}
-.fine,.fine a,.fine button{cursor:none}
-.foot{border-top:1px solid var(--line);padding:26px 0 34px}
+.foot{padding:26px 0 34px}
 .foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:.88rem;color:var(--dim)}
 .foot a{text-decoration:none}
 .foot a:hover{color:var(--text)}
@@ -204,41 +163,36 @@ section{position:relative}
 /* ---------- page ---------- */
 .t-hero{padding:180px 0 90px;position:relative;overflow:hidden}
 .t-hero>.wrap{position:relative;z-index:1}
-.t-hero::before{content:"";position:absolute;right:-20vw;top:-10vh;width:80vw;height:80vh;background:radial-gradient(ellipse,rgba(107,70,193,.22),transparent 65%);pointer-events:none}
-.t-title{font:700 clamp(3.4rem,11vw,11rem)/.86 var(--sans);letter-spacing:-.04em;text-transform:uppercase}
-.t-title .serif{text-transform:none;color:var(--gold2);letter-spacing:-.02em;font-size:.9em}
-.t-intro{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:56px;padding-top:28px;border-top:1px solid var(--line)}
+.t-title{font:700 clamp(2.9rem,7.6vw,9rem)/.88 var(--sans);text-wrap:balance;letter-spacing:-.04em;text-transform:uppercase}
+.t-intro{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:56px}
 .t-intro p{font-size:clamp(1.1rem,1.5vw,1.35rem);line-height:1.5;max-width:40ch}
 .t-intro .note{color:var(--dim);font-size:1rem}
 .toc{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
-.toc a{display:inline-flex;gap:10px;align-items:center;text-decoration:none;padding:10px 18px;border:1px solid var(--line);border-radius:999px;font-size:.92rem;transition:background .3s,border-color .3s}
-.toc a b{font-weight:500;color:var(--gold)}
-.toc a:hover{background:rgba(237,233,226,.06);border-color:rgba(237,233,226,.3)}
+.toc a{display:inline-flex;gap:10px;align-items:center;text-decoration:none;padding:11px 18px;background:var(--bg2);border-radius:999px;font-size:.95rem;transition:background .3s,color .3s}
+.toc a:hover{background:var(--text);color:var(--bg)}
 @media (max-width:900px){.t-intro{grid-template-columns:1fr;gap:20px}}
 
 /* ---------- chapters ---------- */
-.ch{padding:var(--pad) 0;border-top:1px solid var(--line)}
+.ch{padding:var(--pad) 0 0}
 .ch-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.25fr);gap:clamp(32px,5vw,80px);align-items:start}
 .ch-side{position:sticky;top:120px}
-.ch-num{font:500 13px var(--sans);letter-spacing:.2em;color:var(--gold)}
-.ch h2{font:600 clamp(2.4rem,5vw,4.6rem)/.96 var(--sans);letter-spacing:-.035em;margin:18px 0 0}
-.ch .rule{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,2.2vw,1.9rem);line-height:1.25;color:var(--gold2);margin-top:22px;max-width:24ch}
+.ch h2{font:600 clamp(2.4rem,5vw,4.6rem)/.96 var(--sans);letter-spacing:-.035em;margin:0}
+.ch .rule{font:500 clamp(1.3rem,2vw,1.7rem)/1.3 var(--sans);letter-spacing:-.015em;color:var(--gold2);margin-top:22px;max-width:24ch}
 .ch .how{color:#B8B2C2;margin-top:20px;max-width:44ch}
-.why{margin-top:32px;padding:22px 24px;border-radius:18px;background:rgba(201,162,74,.06);border:1px solid rgba(201,162,74,.22)}
-.why small{display:block;font:500 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.why{margin-top:32px;padding:22px 24px;border-radius:18px;background:rgba(201,162,74,.08)}
+.why small{display:block;font:500 13px var(--sans);letter-spacing:0;text-transform:none;color:var(--gold);margin-bottom:8px}
 .why p{color:var(--text);line-height:1.55}
-.panel{border:1px solid var(--line);border-radius:26px;background:linear-gradient(160deg,var(--bg2),#0E0C13);padding:clamp(20px,3vw,36px);position:relative;overflow:hidden}
-.panel::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 100% 0%,rgba(107,70,193,.14),transparent 70%);pointer-events:none}
+.panel{border-radius:26px;background:var(--bg2);padding:clamp(20px,3vw,36px);position:relative;overflow:hidden}
 .panel>*{position:relative}
-.p-label{font:500 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+.p-label{font:500 13px var(--sans);letter-spacing:0;text-transform:none;color:var(--dim)}
 .p-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:22px}
-.chipx{font:500 11px var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:7px 12px;border-radius:999px;border:1px solid rgba(237,233,226,.2);color:var(--dim)}
+.chipx{font:500 13px var(--sans);letter-spacing:0;text-transform:none;padding:7px 12px;border-radius:999px;border:1px solid rgba(237,233,226,.2);color:var(--dim)}
 .mini{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid rgba(237,233,226,.25);color:var(--text);border-radius:999px;padding:10px 18px;font:500 .9rem var(--sans);cursor:pointer;transition:border-color .3s,background .3s}
 .mini:hover{border-color:var(--text)}
 .mini.solid{background:var(--text);color:var(--bg);border-color:var(--text)}
 .mini.solid:hover{background:var(--gold2);border-color:var(--gold2)}
 .mini[disabled]{opacity:.35;pointer-events:none}
-.result{margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+.result{margin-top:28px}
 .result .big{font:600 clamp(1.4rem,2.4vw,2rem)/1.15 var(--sans);letter-spacing:-.03em}
 .result .big em{font-style:normal;color:var(--gold2)}
 .result p{color:#B8B2C2;margin-top:10px}
@@ -251,7 +205,7 @@ section{position:relative}
 .sup{border:1px solid var(--line);border-radius:18px;padding:18px;background:rgba(10,9,13,.5);display:flex;flex-direction:column;gap:10px;transition:border-color .3s,transform .4s cubic-bezier(.16,1,.3,1)}
 .sup:hover{border-color:rgba(237,233,226,.3);transform:translateY(-3px)}
 .sup.picked{border-color:var(--gold)}
-.sup .tagl{font:500 11px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.sup .tagl{font:500 13px var(--sans);letter-spacing:0;text-transform:none;color:var(--gold)}
 .sup b{font:600 1.1rem var(--sans)}
 .sup .q{font:600 2.2rem/1 var(--sans);letter-spacing:-.04em}
 .sup .q small{font-size:.8rem;color:var(--dim);font-weight:400;letter-spacing:0}
@@ -273,12 +227,12 @@ section{position:relative}
 .deal>div{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:rgba(10,9,13,.5)}
 .deal b{display:block;font:600 1.5rem var(--sans);letter-spacing:-.03em;margin-top:4px;font-variant-numeric:tabular-nums}
 .mood{height:6px;border-radius:3px;background:rgba(237,233,226,.08);margin-top:12px;overflow:hidden}
-.mood i{display:block;height:100%;background:linear-gradient(90deg,#F07167,var(--gold),#6FCF97);transition:width .6s}
+.mood i{display:block;height:100%;background:linear-gradient(90deg,#F07167,var(--gold),#6FCF97);transition:width .6s} /* taste-skill-ignore: a mood meter, red to green */
 .chat{display:flex;flex-direction:column;gap:10px;min-height:150px;max-height:260px;overflow:auto;padding:4px 2px 4px;margin-bottom:16px}
 .msg{max-width:82%;padding:11px 15px;border-radius:16px;font-size:.92rem;line-height:1.45;animation:fin .5s cubic-bezier(.16,1,.3,1)}
 .msg.them{background:rgba(237,233,226,.07);border-bottom-left-radius:4px;align-self:flex-start}
 .msg.me{background:var(--text);color:var(--bg);border-bottom-right-radius:4px;align-self:flex-end}
-.msg small{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;opacity:.6;margin-bottom:3px}
+.msg small{display:block;font-size:.8rem;letter-spacing:0;text-transform:none;opacity:.6;margin-bottom:3px}
 .levers{display:flex;flex-wrap:wrap;gap:8px}
 .moves{font-size:.85rem;color:var(--dim);margin-top:12px}
 @media (max-width:700px){.deal{grid-template-columns:1fr 1fr}.deal div:last-child{grid-column:1/-1}}
@@ -297,7 +251,7 @@ section{position:relative}
 .pcard[aria-pressed="true"]{border-color:var(--gold);background:rgba(201,162,74,.08);transform:translateY(-2px)}
 .pcard b{font:600 .98rem/1.2 var(--sans)}
 .pcard span{font-size:.76rem;color:var(--dim);line-height:1.35}
-.pcard .r{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase}
+.pcard .r{font-size:.8rem;letter-spacing:0;text-transform:none}
 .r.low{color:#6FCF97}.r.med{color:var(--gold2)}.r.high{color:#F07167}
 @media (max-width:900px){.cards{grid-template-columns:1fr 1fr}.dash{grid-template-columns:1fr 1fr}}
 
@@ -305,7 +259,7 @@ section{position:relative}
 .fc-wrap{position:relative}
 .fc{width:100%;height:auto;display:block;touch-action:none;cursor:crosshair;user-select:none}
 .fc .grid line{stroke:rgba(237,233,226,.07)}
-.fc text{font:500 11px var(--sans);fill:var(--dim)}
+.fc text{font:500 12px var(--sans);fill:var(--dim)}
 .fc .ly{fill:none;stroke:rgba(237,233,226,.28);stroke-width:2;stroke-dasharray:4 5}
 .fc .mine{fill:none;stroke:var(--gold2);stroke-width:3;stroke-linejoin:round}
 .fc .act{fill:none;stroke:#B9A3F2;stroke-width:3;stroke-linejoin:round;stroke-dasharray:2000;stroke-dashoffset:2000;transition:stroke-dashoffset 2.2s cubic-bezier(.65,0,.35,1)}
@@ -324,7 +278,7 @@ section{position:relative}
 .q-meters .m{height:4px;border-radius:2px;background:rgba(237,233,226,.08);margin-top:8px;overflow:hidden}
 .q-meters .m i{display:block;height:100%;background:var(--gold);transition:width .7s cubic-bezier(.16,1,.3,1)}
 .event{border:1px solid rgba(201,162,74,.3);border-radius:18px;padding:20px;background:rgba(201,162,74,.05)}
-.event .when{font:500 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.event .when{font:500 13px var(--sans);letter-spacing:0;text-transform:none;color:var(--gold)}
 .event h3{font:600 clamp(1.3rem,2.2vw,1.8rem)/1.2 var(--sans);letter-spacing:-.025em;margin:8px 0 16px}
 .opts{display:grid;gap:8px}
 .opt{text-align:left;border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:rgba(10,9,13,.6);color:var(--text);font:500 .95rem var(--sans);cursor:pointer;transition:border-color .3s,background .3s}
@@ -345,7 +299,7 @@ section{position:relative}
 }
 
 /* ---------- summary ---------- */
-.sum{padding:var(--pad) 0;border-top:1px solid var(--line)}
+.sum{padding:var(--pad) 0}
 .sum ol{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:56px;counter-reset:s}
 .sum li{border-top:2px solid var(--gold);padding-top:18px}
 .sum li b{display:block;font:600 1.3rem/1.15 var(--sans);letter-spacing:-.02em}
@@ -353,13 +307,13 @@ section{position:relative}
 .sum .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:56px}
 @media (max-width:1100px){.sum ol{grid-template-columns:1fr 1fr}}
 @media (max-width:600px){.sum ol{grid-template-columns:1fr}}
+@media (max-width:980px){.h2{max-width:none}}
 </style>
 <script>document.documentElement.classList.add('js');if(matchMedia('(pointer: fine)').matches)document.documentElement.classList.add('fine');try{if(sessionStorage.getItem('pvp-curtain')){document.documentElement.classList.add('arriving');sessionStorage.removeItem('pvp-curtain')}}catch(e){}</script>
 </head>
 <body>
 <div class="curtain" aria-hidden="true"><span>How I think</span></div>
 <a class="skip" href="#main">Skip to content</a>
-<div class="grain" aria-hidden="true"></div>
 <header class="nav" id="nav">
   <div class="nav-bg"></div>
   <div class="wrap nav-in">
@@ -382,16 +336,14 @@ section{position:relative}
 
 <main id="main">
 <section class="t-hero" id="top" aria-labelledby="t-h">
-  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap">
-    <div class="tag"><b>Vol. 01</b>How I think</div>
-    <h1 class="t-title" id="t-h" data-split>Five decisions, <span class="serif">try them yourself</span></h1>
+    <h1 class="t-title" id="t-h" data-split>Five decisions,<br> try them yourself</h1>
     <div class="t-intro">
       <p class="rv">Most of my week goes on deciding who to buy from, what price to accept, what to keep in stock and what to do when a shipment runs late. I turned five of those calls into small exercises you can try in a minute or two.</p>
       <p class="rv note">The numbers here are made up. The way of thinking is mine, but the details of what I do for my employer stay private.</p>
     </div>
     <nav class="toc rv" aria-label="Chapters">
-      <a href="#suppliers"><b>01</b>The supplier showdown</a><a href="#negotiation"><b>02</b>The negotiation</a><a href="#range"><b>03</b>Build the range</a><a href="#forecast"><b>04</b>Forecast the year</a><a href="#quarter"><b>05</b>Run the quarter</a>
+      <a href="#suppliers">The supplier showdown</a><a href="#negotiation">The negotiation</a><a href="#range">Build the range</a><a href="#forecast">Forecast the year</a><a href="#quarter">Run the quarter</a>
     </nav>
   </div>
 </section>
@@ -400,13 +352,12 @@ section{position:relative}
 <section class="ch" id="suppliers" aria-labelledby="c1">
   <div class="wrap ch-grid">
     <div class="ch-side">
-      <span class="ch-num">01 / 05</span>
       <h2 id="c1" data-split>The supplier showdown</h2>
       <p class="rule rv">The lowest quote often costs more by the time the part reaches the shelf.</p>
       <p class="how rv">Three suppliers have quoted for the same 1,000 brake pads. Pick one, then see what each would really cost once freight, duty and payment terms are counted.</p>
       <div class="why rv"><small>Why it matters to you</small><p>A supplier with a low price can still be the expensive choice once freight and payment terms are added up. I compare the full cost before I recommend anyone.</p></div>
     </div>
-    <div class="panel rv" id="sd">
+    <div class="panel rv" data-ui id="sd">
       <div class="p-head"><span class="p-label">Which supplier gets the order?</span><span class="chipx">1,000 units needed</span></div>
       <div class="sups" id="sdSups"></div>
       <div id="sdOut"></div>
@@ -418,13 +369,12 @@ section{position:relative}
 <section class="ch" id="negotiation" aria-labelledby="c2">
   <div class="wrap ch-grid">
     <div class="ch-side">
-      <span class="ch-num">02 / 05</span>
       <h2 id="c2" data-split>The negotiation</h2>
       <p class="rule rv">Suppliers move on price when they get something useful in return.</p>
       <p class="how rv">You have four moves. Each one changes the price and how the supplier feels about you. Push too hard and they stop giving ground.</p>
       <div class="why rv"><small>Why it matters to you</small><p>I try to offer a supplier something that helps them, such as steady volume or easier planning, in return for a better price. They remember it the next time we need a favour.</p></div>
     </div>
-    <div class="panel rv" id="ng">
+    <div class="panel rv" data-ui id="ng">
       <div class="deal">
         <div><span class="p-label">Price per unit</span><b id="ngPrice">10.00</b></div>
         <div><span class="p-label">Payment</span><b id="ngPay" style="font-size:1.05rem">60 days</b></div>
@@ -442,13 +392,12 @@ section{position:relative}
 <section class="ch" id="range" aria-labelledby="c3">
   <div class="wrap ch-grid">
     <div class="ch-side">
-      <span class="ch-num">03 / 05</span>
       <h2 id="c3" data-split>Build the range</h2>
       <p class="rule rv">Every item should earn the cash it ties up.</p>
       <p class="how rv">You have 100 to spend on stock. Choose the items you would carry and watch the numbers above change as you go. Lock it in when you are happy.</p>
       <div class="why rv"><small>Why it matters to you</small><p>Cash stuck in slow stock cannot pay suppliers or fund the items that sell. I review the range regularly and cut what is not paying its way.</p></div>
     </div>
-    <div class="panel rv" id="rg">
+    <div class="panel rv" data-ui id="rg">
       <div class="dash">
         <div id="rgSpendBox"><span class="p-label">Spent</span><b id="rgSpend">0 / 100</b></div>
         <div><span class="p-label">Profit a month</span><b id="rgProfit">0.0</b></div>
@@ -467,13 +416,12 @@ section{position:relative}
 <section class="ch" id="forecast" aria-labelledby="c4">
   <div class="wrap ch-grid">
     <div class="ch-side">
-      <span class="ch-num">04 / 05</span>
       <h2 id="c4" data-split>Forecast the year</h2>
       <p class="rule rv">Start from last year, then adjust for what is different this time.</p>
       <p class="how rv">The dashed line is last year's demand for one part. Drag across the chart to draw next year, using the notes under it. Then reveal what actually happened.</p>
       <div class="why rv"><small>Why it matters to you</small><p>A better forecast means less money in the wrong stock and fewer customers sent away empty-handed. I build mine from real demand and review it every cycle.</p></div>
     </div>
-    <div class="panel rv" id="fcp">
+    <div class="panel rv" data-ui id="fcp">
       <div class="p-head"><span class="p-label">Monthly demand, units</span><span class="chipx">Drag to draw</span></div>
       <div class="fc-wrap"><svg class="fc" id="fc" viewBox="0 0 640 300" role="img" aria-label="Forecast chart. Drag to set your forecast for each month."></svg></div>
       <div class="fc-legend"><span><i style="background:rgba(237,233,226,.4)"></i>Last year</span><span><i style="background:var(--gold2)"></i>Your forecast</span><span><i style="background:#B9A3F2"></i>What happened</span></div>
@@ -487,13 +435,12 @@ section{position:relative}
 <section class="ch" id="quarter" aria-labelledby="c5">
   <div class="wrap ch-grid">
     <div class="ch-side">
-      <span class="ch-num">05 / 05</span>
       <h2 id="c5" data-split>Run the quarter</h2>
       <p class="rule rv">When plans go wrong, fix what affects customers first and keep the response in proportion.</p>
       <p class="how rv">Three months and three surprises. Every choice moves cash, customers, margin and supplier goodwill, and none of the options is free.</p>
       <div class="why rv"><small>Why it matters to you</small><p>When a shipment is late or costs change, I look at the effect on the whole business before acting. Spending heavily to fix a small problem is a mistake I work hard to avoid.</p></div>
     </div>
-    <div class="panel rv" id="qt">
+    <div class="panel rv" data-ui id="qt">
       <div class="q-meters" id="qtMeters"></div>
       <div id="qtStage"></div>
     </div>
@@ -502,8 +449,7 @@ section{position:relative}
 
 <section class="sum" aria-labelledby="sum-h">
   <div class="wrap">
-    <div class="tag"><b>In short</b>What you get</div>
-    <h2 class="h2" id="sum-h" data-split>What you get if you <span class="serif">hire me</span></h2>
+    <h2 class="h2" id="sum-h" data-split>What you get if you hire me</h2>
     <ol>
       <li class="rv"><b>Lower real cost</b><span>I compare suppliers on the full cost to the shelf, not just the quoted price.</span></li>
       <li class="rv"><b>Better supplier deals</b><span>I trade things suppliers value for a better price, and keep the relationship in good shape.</span></li>
@@ -516,8 +462,7 @@ section{position:relative}
 </section>
 </main>
 <footer class="foot" data-mbar-hide><div class="wrap"><span>&copy; 2026 Prejith Varghese Ponnachan</span><span>Muscat, Oman</span><a href="index.html">Back to home &#8593;</a></div></footer>
-<div class="cur" id="cur" aria-hidden="true"></div>
-<nav class="mbar" aria-label="Chapters"><a href="#suppliers">01</a><a href="#negotiation">02</a><a href="#range">03</a><a href="#forecast">04</a><a href="#quarter">05</a><a class="pri" href="index.html#contact">Contact</a></nav>
+<nav class="mbar" aria-label="Chapters"><a href="#suppliers">Quotes</a><a href="#negotiation">Deal</a><a href="#range">Range</a><a href="#forecast">Forecast</a><a href="#quarter">Quarter</a><a class="pri" href="index.html#contact">Contact</a></nav>
 
 <script src="js/lenis.min.js" defer></script>
 <script src="js/motion.js" defer></script>
@@ -527,7 +472,7 @@ section{position:relative}
   const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
   const f2=n=>n.toFixed(2);
 
-  // shared: clock, menu, nav, reveals, cursor
+  // shared: clock, menu, nav, reveals
   const fmt=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Muscat',hour:'2-digit',minute:'2-digit'});
   const tick=()=>{$('#clock').textContent=fmt.format(new Date());};tick();setInterval(tick,15000);
   const btn=$('#menuBtn'),links=$('#links');
@@ -540,12 +485,6 @@ section{position:relative}
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{rootMargin:'0px 0px -8% 0px'});
   $$('[data-split],.rv').forEach(el=>io.observe(el));
   setTimeout(()=>{$$('[data-split],.rv').forEach(el=>{if(el.getBoundingClientRect().top<innerHeight)el.classList.add('in');});},1500);
-  if(document.documentElement.classList.contains('fine')&&!reduce){
-    const cur=$('#cur');let mx=-100,my=-100,cx=-100,cy=-100;
-    addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;},{passive:true});
-    (function f(){cx+=(mx-cx)*.2;cy+=(my-cy)*.2;cur.style.transform='translate3d('+cx+'px,'+cy+'px,0)';requestAnimationFrame(f);})();
-    document.addEventListener('pointerover',e=>{cur.classList.toggle('big',!!e.target.closest('a,button'));});
-  }
 
   // ===== 01 supplier showdown
   (function(){
