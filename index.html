@@ -91,7 +91,7 @@
 :root{
   --bg:#0A090D;--bg2:#140F1C;--bg3:#1E1629;--text:#EDE9E2;--dim:#8E8899;--line:rgba(237,233,226,.1);
   --fs-sm:.95rem;--fs-body:1.0625rem;--fs-lead:1.2rem;--fs-quote:1.35rem;--fs-statement:clamp(1.2rem,1.75vw,1.65rem);
-  --fs-h4:clamp(1.5rem,2.6vw,2.4rem);--fs-h3:clamp(2rem,3.8vw,3.6rem);--fs-h2:clamp(2.6rem,7vw,7.2rem);
+  --fs-h4:clamp(min(1.5rem,7vw),2.6vw,2.4rem);--fs-h3:clamp(min(2rem,9vw),3.8vw,3.6rem);--fs-h2:clamp(min(2.6rem,11vw),7vw,7.2rem);
   --text2:#C2BCCB;--bg0:#060509;--bg4:#2B2632;
   --purple:#7B4BD8;--purple-soft:#BBA4F5;--purple-deep:#2A1452;
   --gold:#C9A24A;--gold2:#E3C77E;--violet:#6B46C1;
@@ -105,12 +105,14 @@
 html{-webkit-text-size-adjust:100%}
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
-body{margin:0;background:var(--bg);color:var(--text);font:400 var(--fs-body)/1.6 var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--text);font:400 var(--fs-body)/1.6 var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip}
+html{overflow-x:clip;color-scheme:dark}
+section[id]{scroll-margin-top:84px}
 h1,h2,h3,h4,p,ul,ol,figure{margin:0}
 ul,ol{padding:0;list-style:none}
 a{color:inherit}
 img{max-width:100%;display:block}
-::selection{background:var(--purple);color:#fff}
+::selection{background:var(--purple);color:var(--text)}
 html{scrollbar-color:#4A2F7A var(--bg)}
 ::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:#4A2F7A;border-radius:10px;border:2px solid var(--bg)}::-webkit-scrollbar-thumb:hover{background:var(--gold)}
 input,textarea{caret-color:var(--gold)}
@@ -174,7 +176,7 @@ a:hover>.roll>span,button:hover>.roll>span,.roll-host:hover .roll>span{transform
 /* ---------- section heads ---------- */
 section{position:relative}
 .sec{padding:var(--pad) 0}
-.h2{font:600 var(--fs-h2)/.94 var(--sans);letter-spacing:-.035em;max-width:14ch;text-wrap:balance}
+.h2{overflow-wrap:anywhere;font:600 var(--fs-h2)/.94 var(--sans);letter-spacing:-.035em;max-width:14ch;text-wrap:balance}
 .lede{color:var(--text2);font-size:var(--fs-lead);line-height:1.55;max-width:52ch;margin-top:26px}
 .head-row{display:grid;grid-template-columns:1fr auto;align-items:end;gap:32px}
 
@@ -282,6 +284,8 @@ section{position:relative}
 .c-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:32px;margin-top:48px;padding-bottom:64px}
 .c-row p{color:var(--dim);max-width:40ch}
 .c-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.c-row>div{min-width:0}
+.c-links .btn{max-width:100%;white-space:normal;overflow-wrap:anywhere;text-align:left}
 @media (max-width:980px){.c-row{grid-template-columns:1fr}}
 
 /* ---------- how I work: the order's journey, held on screen while it plays ---------- */
@@ -495,7 +499,7 @@ main{position:relative;z-index:1;background:var(--bg);border-radius:0 0 32px 32p
 .field-gold .btn-secondary:hover{background:rgba(10,9,13,.18)}
 .field-gold :focus-visible{outline-color:var(--bg)}
 /* websites I've made: one showcase card per site, the screenshot as the way in */
-.site-card{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;margin-top:64px;padding:clamp(16px,2vw,24px);border-radius:28px;background:var(--bg2)}
+.site-card{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;margin-top:64px;padding:clamp(16px,2vw,24px);border-radius:28px;background:var(--bg2)}
 .site-shot{display:block;border-radius:18px;overflow:hidden;aspect-ratio:16/10;background:#020504}
 .site-shot img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
 .site-shot:hover img,.site-shot:focus-visible img{transform:scale(1.035)}
@@ -525,7 +529,6 @@ main{position:relative;z-index:1;background:var(--bg);border-radius:0 0 32px 32p
     <a class="brand" href="#top">Prejith<sup>&copy;</sup></a>
     <nav class="links" id="links" aria-label="Primary">
       <a href="#work"><span class="roll"><span data-t="Work">Work</span></span></a>
-      <a href="#websites"><span class="roll"><span data-t="Websites">Websites</span></span></a>
       <a href="thinking.html"><span class="roll"><span data-t="How I think">How I think</span></span></a>
       <a href="#experience"><span class="roll"><span data-t="Experience">Experience</span></span></a>
       <a href="#credentials"><span class="roll"><span data-t="Credentials">Credentials</span></span></a>
@@ -605,33 +608,6 @@ main{position:relative;z-index:1;background:var(--bg);border-radius:0 0 32px 32p
   </div>
 </section>
 
-<section class="sec" id="websites" aria-labelledby="sites-h" style="padding-top:0">
-  <div class="wrap">
-    <div class="head-row">
-      <div>
-      <h2 class="h2" id="sites-h" data-split>Sites built to be remembered</h2></div>
-      <p class="lede rv" style="max-width:38ch">Websites built for people to stay on. If your business needs one, get in touch.</p>
-    </div>
-    <article class="site-card rv">
-      <a class="site-shot" href="https://doomsday-dossier.github.io/doomsday-dossier/" target="_blank" rel="noopener" aria-label="Open Doomsday Dossier in a new tab">
-        <img src="img/doomsday-dossier.webp" width="1400" height="875" loading="lazy" decoding="async" alt="Doomsday Dossier's home screen: a cracked green planet of 30 shards, a countdown to Avengers: Doomsday and Doctor Doom's system panels">
-      </a>
-      <div class="site-txt">
-        <h3>Doomsday Dossier</h3>
-        <p class="site-meta">Fan site, 2026</p>
-        <p>An unofficial fan site for Avengers: Doomsday, built as Doctor Doom’s own computer. The visitor is Doom, and the heroes are his targets.</p>
-        <ul class="site-list">
-          <li>A 3D planet of 30 characters you can turn and dive into</li>
-          <li>An original score that builds as you explore, all made in code</li>
-          <li>Hacking fights, fan votes and predictions, every fact sourced</li>
-        </ul>
-        <p class="site-credit">Designed and directed by me.</p>
-        <div class="site-acts"><a class="btn btn-primary" href="https://doomsday-dossier.github.io/doomsday-dossier/" target="_blank" rel="noopener">Visit the site</a><a class="btn btn-secondary" href="mailto:prejith.ponnachan1@outlook.com?subject=A%20website%20for%20my%20business&amp;body=Hi%20Prejith%2C%0A%0AI%20would%20like%20to%20talk%20about%20a%20website.%0A%0ABusiness%3A%20%0AWhat%20it%20should%20do%3A%20">Ask about a website</a></div>
-      </div>
-    </article>
-  </div>
-</section>
-
 <section class="sec think" id="think" aria-labelledby="think-h" style="padding-top:0">
   <div class="wrap">
     <div class="head-row">
@@ -681,7 +657,7 @@ main{position:relative;z-index:1;background:var(--bg);border-radius:0 0 32px 32p
         <li><a href="certificates/six-sigma-white-belt.webp" target="_blank" rel="noopener" data-prev="certificates/six-sigma-white-belt.webp"><span><b>Six Sigma White Belt</b><span>The Council for Six Sigma Certification · May 2024</span></span><i aria-hidden="true">&#8599;</i></a></li>
       </ul></div>
     </div>
-    <div class="courses-list rv" id="courses"><h3 class="sub-h">Courses completed on Udemy, alongside full-time work</h3><div id="courseGroups"></div></div>
+    <div class="courses-list rv" id="courses"><h3 class="sub-h">Courses completed on Udemy, alongside full-time work</h3><button class="btn btn-secondary early-btn" id="courseBtn" aria-expanded="false" aria-controls="courseGroups">Show the courses</button><div id="courseGroups" hidden></div></div>
     <div class="skills" id="skills">
       <div class="rv"><h3>Demand planning</h3><ul><li>Demand forecasting</li><li>S&amp;OP and forecast review cycles</li><li>Safety stock and reorder points</li><li>Stock cover and days of inventory</li><li>ABC analysis</li><li>Stockout tracking</li><li>Replenishment planning</li><li>Dead stock prevention</li></ul></div>
       <div class="rv"><h3>Procurement and trade</h3><ul><li>RFQs and quotation review</li><li>Price, MOQ and lead time negotiation</li><li>Landed cost comparison</li><li>Purchase orders and goods receipt</li><li>PO to invoice reconciliation</li><li>Supplier sourcing and onboarding</li><li>Supplier scorecards</li><li>Claims, credit notes and warranty recovery</li><li>Incoterms (EXW, FOB, CIF, CFR)</li><li>Letters of credit and TT payments</li><li>Freight forwarder selection (LCL and FCL)</li><li>Customs and HS classification (Oman Bayan)</li></ul></div>
@@ -690,6 +666,33 @@ main{position:relative;z-index:1;background:var(--bg);border-radius:0 0 32px 32p
     </div>
     <div class="rv" style="margin-top:56px"><h3 class="sub-h">Languages</h3>
       <ul class="langs"><li>English<span>Fluent</span></li><li>Malayalam</li><li>Hindi</li><li>Tamil</li><li>Arabic<span>Conversational</span></li></ul></div>
+  </div>
+</section>
+
+<section class="sec" id="websites" aria-labelledby="sites-h" style="padding-top:0">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+      <h2 class="h2" id="sites-h" data-split>Sites built to be remembered</h2></div>
+      <p class="lede rv" style="max-width:38ch">Websites built for people to stay on. If your business needs one, get in touch.</p>
+    </div>
+    <article class="site-card rv">
+      <a class="site-shot" href="https://doomsday-dossier.github.io/doomsday-dossier/" target="_blank" rel="noopener" aria-label="Open Doomsday Dossier in a new tab">
+        <img src="img/doomsday-dossier.webp" width="1400" height="875" loading="lazy" decoding="async" alt="Doomsday Dossier's home screen: a cracked green planet of 30 shards, a countdown to Avengers: Doomsday and Doctor Doom's system panels">
+      </a>
+      <div class="site-txt">
+        <h3>Doomsday Dossier</h3>
+        <p class="site-meta">Fan site, 2026</p>
+        <p>An unofficial fan site for Avengers: Doomsday, built as Doctor Doom’s own computer. The visitor is Doom, and the heroes are his targets.</p>
+        <ul class="site-list">
+          <li>A 3D planet of 30 characters you can turn and dive into</li>
+          <li>An original score that builds as you explore, all made in code</li>
+          <li>Hacking fights, fan votes and predictions, every fact sourced</li>
+        </ul>
+        <p class="site-credit">Designed and directed by me.</p>
+        <div class="site-acts"><a class="btn btn-primary" href="https://doomsday-dossier.github.io/doomsday-dossier/" target="_blank" rel="noopener">Visit the site</a><a class="btn btn-secondary" href="mailto:prejith.ponnachan1@outlook.com?subject=A%20website%20for%20my%20business&amp;body=Hi%20Prejith%2C%0A%0AI%20would%20like%20to%20talk%20about%20a%20website.%0A%0ABusiness%3A%20%0AWhat%20it%20should%20do%3A%20">Ask about a website</a></div>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -773,6 +776,8 @@ const COURSES = [
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&links.classList.contains('open')){setMenu(false);btn.focus()}});
 
   // early career
+  const cb=$('#courseBtn'),cg=$('#courseGroups');
+  cb.addEventListener('click',()=>{const o=cg.hidden;cg.hidden=!o;cb.setAttribute('aria-expanded',o?'true':'false');cb.textContent=o?'Hide the courses':'Show the courses';});
   const eb=$('#earlyBtn'),early=$('#early');
   eb.addEventListener('click',()=>{const o=early.hidden;early.hidden=!o;eb.setAttribute('aria-expanded',o?'true':'false');eb.textContent=o?'Hide early career':'Show early career';});
 

@@ -15,7 +15,7 @@
     });
   };
 
-  // page curtain: lift on arrival, drop before leaving for the other page
+  // page curtain: lifts on arrival if a previous version of the page set it (links no longer wait for it)
   if (root.classList.contains('arriving')) {
     requestAnimationFrame(() => requestAnimationFrame(() => {
       root.classList.add('arrived'); root.classList.remove('arriving');
@@ -23,18 +23,6 @@
     }));
   }
   addEventListener('pageshow', e => { if (e.persisted) root.classList.remove('leaving', 'arriving', 'arrived'); });
-  if (!reduce) {
-    document.addEventListener('click', e => {
-      const a = e.target.closest('a[href]');
-      if (!a || a.target === '_blank' || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-      const url = new URL(a.href, location.href);
-      if (url.origin !== location.origin || !/\.html$/.test(url.pathname) || url.pathname === location.pathname) return;
-      e.preventDefault();
-      try { sessionStorage.setItem('pvp-curtain', '1'); } catch (err) {}
-      root.classList.add('leaving');
-      setTimeout(() => { location.href = a.href; }, 760);
-    });
-  }
 
   // phone menu: stagger the links
   document.querySelectorAll('#links > a').forEach((a, i) => a.style.setProperty('--n', i));
