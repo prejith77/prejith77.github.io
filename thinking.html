@@ -12,7 +12,12 @@
 <meta property="og:description" content="Five short exercises based on decisions I make in demand planning and procurement.">
 <meta property="og:url" content="https://prejith77.github.io/thinking.html">
 <meta property="og:image" content="https://prejith77.github.io/og-image.png?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How I think | Prejith Varghese Ponnachan">
+<meta name="twitter:image" content="https://prejith77.github.io/og-image.png?v=2">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"How I think","url":"https://prejith77.github.io/thinking.html","inLanguage":"en-GB","about":["Supplier selection","Price negotiation","Range planning","Demand forecasting","Supply chain disruption"],"author":{"@type":"Person","name":"Prejith Varghese Ponnachan","url":"https://prejith77.github.io/","jobTitle":"Product Executive"}}</script>
 <meta name="theme-color" content="#0A090D">
 <link rel="preload" href="fonts/InterTight-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -105,7 +110,7 @@ img{max-width:100%;display:block}
 .nav{position:fixed;inset:0 0 auto 0;z-index:100;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 .nav.hide{transform:translateY(-110%)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;height:84px}
-.brand{font:600 1.05rem var(--sans);letter-spacing:-.01em;text-decoration:none}
+.brand{font:600 1.05rem var(--sans);letter-spacing:-.01em;text-decoration:none;padding:12px 0}
 .brand sup{font-size:.55em;color:var(--gold);margin-left:2px}
 .links{display:flex;gap:6px;align-items:center}
 .links a{position:relative;text-decoration:none;font:500 .92rem var(--sans);padding:8px 14px;border-radius:999px;transition:background .3s}
@@ -117,7 +122,7 @@ img{max-width:100%;display:block}
 .nav .cta-pill:hover{background:#BBA4F5}
 .nav-bg{position:absolute;inset:0;z-index:-1;background:rgba(10,9,13,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);opacity:0;transition:opacity .4s}
 .nav.solid .nav-bg{opacity:1}
-.menu-btn{display:none;background:var(--bg3);border:0;color:var(--text);border-radius:999px;padding:9px 18px;font:500 .9rem var(--sans);cursor:pointer}
+.menu-btn{display:none;background:var(--bg3);border:0;color:var(--text);border-radius:999px;padding:12px 20px;min-height:44px;font:500 .9rem var(--sans);cursor:pointer}
 @media (max-width:980px){
   .links,.clock{display:none}
   .menu-btn{display:inline-block}
@@ -134,6 +139,7 @@ a:hover>.roll>span,button:hover>.roll>span,.roll-host:hover .roll>span{transform
 
 /* ---------- buttons ---------- */
 .btn{display:inline-flex;align-items:center;gap:12px;border-radius:999px;padding:16px 18px 16px 26px;font:500 1rem var(--sans);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+.btn:active{transform:scale(.97)}
 .btn-primary{background:var(--gold2);color:var(--bg)}
 .btn-primary:hover{background:#EFD99A}
 .btn-primary::after{content:"\2197";display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--bg);color:var(--gold2);font-size:.85rem;transition:transform .4s}
@@ -160,13 +166,14 @@ section{position:relative}
 
 .foot{padding:26px 0 34px}
 .foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:.88rem;color:var(--dim)}
-.foot a{text-decoration:none}
+.foot a{text-decoration:none;display:inline-block;padding:12px 0}
 .foot a:hover{color:var(--text)}
 
 /* ---------- page ---------- */
 .t-hero{padding:180px 0 90px;position:relative;overflow:hidden}
 .t-hero>.wrap{position:relative;z-index:1}
-.t-title{font:700 clamp(2.9rem,7.6vw,9rem)/.88 var(--sans);text-wrap:balance;letter-spacing:-.04em;text-transform:uppercase}
+.t-title{font:700 clamp(2.9rem,7.6vw,9rem)/.95 var(--sans);text-wrap:balance;letter-spacing:-.04em;text-transform:uppercase}
+.nojs{margin-top:32px;color:var(--gold2)}
 .t-intro{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:56px}
 .t-intro p{font-size:clamp(1.1rem,1.5vw,1.35rem);line-height:1.5;max-width:40ch}
 .t-intro .note{color:var(--dim);font-size:1rem}
@@ -359,9 +366,10 @@ section{position:relative}
 <section class="t-hero" id="top" aria-labelledby="t-h">
   <div class="wrap">
     <h1 class="t-title" id="t-h" data-split>Five decisions,<br> try them yourself</h1>
+    <noscript><p class="nojs">The five exercises need JavaScript to run. Everything else on this page reads without it.</p></noscript>
     <div class="t-intro">
       <p class="rv">A week in procurement is mostly decisions about who to buy from, what price to accept, what to keep in stock and what to do when a shipment runs late. Here are five of those calls as small exercises, a minute or two each.</p>
-      <p class="rv note">The numbers here are made up. The way of thinking is real, and the details of the employer's business stay private.</p>
+      <p class="rv note">The numbers here are made up. The way of thinking is real, and the details of the employer’s business stay private.</p>
     </div>
     <nav class="tiles rv" aria-label="Chapters"><a class="tile" href="#suppliers"><svg class="tg" viewBox="0 0 72 44" fill="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M8 40 V24 H20 V40"/><path pathLength="1" d="M8 24 V16 H20 V24"/><path pathLength="1" d="M30 40 V20 H42 V40"/><path pathLength="1" d="M30 20 V8 H42 V20"/><path pathLength="1" d="M52 40 V22 H64 V40"/><path pathLength="1" d="M52 22 V18 H64 V22"/><path pathLength="1" d="M2 41 H70"/></svg><b>The supplier showdown</b><span>The lowest quote often costs more by the time it reaches the shelf.</span><i aria-hidden="true">&#8595;</i></a><a class="tile" href="#negotiation"><svg class="tg" viewBox="0 0 72 44" fill="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 22 H28"/><path pathLength="1" d="M22 16 L28 22 L22 28"/><path pathLength="1" d="M68 22 H44"/><path pathLength="1" d="M50 16 L44 22 L50 28"/><circle pathLength="1" cx="36" cy="22" r="4"/></svg><b>The negotiation</b><span>Suppliers move on price when they get something back.</span><i aria-hidden="true">&#8595;</i></a><a class="tile" href="#range"><svg class="tg" viewBox="0 0 72 44" fill="none" aria-hidden="true" focusable="false"><circle pathLength="1" cx="12" cy="8" r="4" class="f"/><circle pathLength="1" cx="36" cy="8" r="4" class=""/><circle pathLength="1" cx="60" cy="8" r="4" class="f"/><circle pathLength="1" cx="12" cy="22" r="4" class=""/><circle pathLength="1" cx="36" cy="22" r="4" class="f"/><circle pathLength="1" cx="60" cy="22" r="4" class=""/><circle pathLength="1" cx="12" cy="36" r="4" class="f"/><circle pathLength="1" cx="36" cy="36" r="4" class=""/><circle pathLength="1" cx="60" cy="36" r="4" class=""/></svg><b>Build the range</b><span>Every item should earn the cash it ties up.</span><i aria-hidden="true">&#8595;</i></a><a class="tile" href="#forecast"><svg class="tg" viewBox="0 0 72 44" fill="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M2 41 H70"/><path pathLength="1" d="M4 32 L16 26 L28 30 L38 18"/><path class="nd" d="M38 18 L50 22 L62 10"/><circle pathLength="1" cx="38" cy="18" r="2.5"/></svg><b>Forecast the year</b><span>Start from last year, then adjust for what changed.</span><i aria-hidden="true">&#8595;</i></a><a class="tile" href="#quarter"><svg class="tg" viewBox="0 0 72 44" fill="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M8 38 A28 28 0 0 1 64 38"/><path pathLength="1" d="M36 38 L50 18"/><circle pathLength="1" cx="36" cy="38" r="3"/><path pathLength="1" d="M14 30 L18 32"/><path pathLength="1" d="M58 30 L54 32"/><path pathLength="1" d="M36 13 V17"/></svg><b>Run the quarter</b><span>When plans go wrong, look after customers first.</span><i aria-hidden="true">&#8595;</i></a></nav>
   </div>
@@ -437,7 +445,7 @@ section{position:relative}
     <div class="ch-side">
       <h2 id="c4" data-split>Forecast the year</h2>
       <p class="rule rv">Start from last year, then adjust for what is different this time.</p>
-      <p class="how rv">The dashed line is last year's demand for one part. Drag across the chart to draw next year, using the notes under it. Then reveal what actually happened.</p>
+      <p class="how rv">The dashed line is last year’s demand for one part. Drag across the chart to draw next year, using the notes under it. Then reveal what actually happened.</p>
       <div class="why rv"><small>Why it matters to you</small><p>A better forecast means less money in the wrong stock and fewer customers sent away empty-handed. Forecasts here are built from real demand and reviewed every cycle.</p></div>
     </div>
     <div class="panel rv" data-ui id="fcp">
@@ -476,7 +484,7 @@ section{position:relative}
       <li class="rv"><b>Forecasts you can explain</b><span>Built from real demand and checked every cycle, so each order has a reason behind it.</span></li>
       <li class="rv"><b>Steady decisions</b><span>When something goes wrong, customers come first and the cost of fixing it stays sensible.</span></li>
     </ol>
-    <div class="cta rv"><a class="btn btn-primary" href="index.html#contact">Let's talk</a><a class="btn btn-secondary" href="index.html#work">See the work</a></div>
+    <div class="cta rv"><a class="btn btn-primary" href="index.html#contact">Let’s talk</a><a class="btn btn-secondary" href="index.html#work">See the work</a></div>
   </div>
 </section>
 </main>
