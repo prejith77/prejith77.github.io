@@ -2,7 +2,7 @@
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Page not found | Prejith Varghese Ponnachan</title>
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0B0A10">
@@ -16,9 +16,9 @@ html{scrollbar-color:#3A3344 var(--bg)}
 body{margin:0;min-height:100svh;display:flex;flex-direction:column;background:var(--bg);color:var(--text);font:400 1.0625rem/1.6 var(--sans);-webkit-font-smoothing:antialiased}
 ::selection{background:var(--gold);color:var(--bg)}
 :focus-visible{outline:2px solid var(--gold);outline-offset:4px}
-.wrap{width:100%;max-width:1480px;margin:0 auto;padding:0 var(--gut)}
+.wrap{width:100%;max-width:1480px;margin:0 auto;padding:0 max(var(--gut),env(safe-area-inset-right,0px)) 0 max(var(--gut),env(safe-area-inset-left,0px))}
 header .wrap{display:flex;align-items:center;height:84px}
-.brand{font:600 1.05rem var(--sans);letter-spacing:-.01em;text-decoration:none;color:inherit}
+.brand{font:600 1.05rem var(--sans);letter-spacing:-.01em;text-decoration:none;color:inherit;padding:12px 0;-webkit-tap-highlight-color:transparent}
 .brand sup{font-size:.55em;color:var(--gold);margin-left:2px}
 main{flex:1;display:flex;align-items:center;padding:48px 0 96px}
 main>.wrap{min-width:0}
@@ -27,11 +27,11 @@ p{margin:32px 0 0;max-width:44ch;font-size:clamp(1.2rem,1.75vw,1.65rem);line-hei
 .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
 .btn{display:inline-flex;align-items:center;gap:12px;border-radius:999px;padding:16px 26px;font:500 1.0625rem var(--sans);text-decoration:none;transition:background .3s,color .3s}
 .btn-primary{background:var(--text);color:var(--bg);padding-right:18px}
-.btn-primary:hover{background:var(--gold2)}
+@media (hover:hover) and (pointer:fine){.btn-primary:hover{background:var(--gold2)}}
 .btn-primary::after{content:"";display:block;width:28px;height:28px;border-radius:50%;background:var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 11.5l7-7M6 4.5h5.5V10' fill='none' stroke='%23E3C77E' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat;color:var(--gold2);font-size:.85rem;transition:transform .4s}
-.btn-primary:hover::after{transform:rotate(45deg)}
+@media (hover:hover) and (pointer:fine){.btn-primary:hover::after{transform:rotate(45deg)}}
 .btn-secondary{background:var(--bg3);color:var(--text)}
-.btn-secondary:hover{background:var(--bg4)}
+@media (hover:hover) and (pointer:fine){.btn-secondary:hover{background:var(--bg4)}}
 h1,p,.acts{animation:rise .9s cubic-bezier(.16,1,.3,1) both}
 p{animation-delay:.08s}.acts{animation-delay:.16s}
 @keyframes rise{from{opacity:0;transform:translateY(24px)}}

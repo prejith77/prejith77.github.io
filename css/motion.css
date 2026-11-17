@@ -39,7 +39,9 @@ html.arrived .curtain span{opacity:0;transform:translateY(-24px);transition:opac
 }
 
 @media (max-width:420px){.mbar a{padding:0 3px;font-size:.8rem}}
-@media (max-width:360px){.mbar{gap:2px;left:8px;right:8px}.mbar a{min-width:0;padding:0 2px;font-size:.74rem}}
+.mbar{left:max(12px,env(safe-area-inset-left,0px));right:max(12px,env(safe-area-inset-right,0px))}
+@media (max-width:360px){.mbar{gap:2px;left:8px;right:8px}.mbar a{min-width:0;padding:0 4px;font-size:.8rem}}
+@media (max-width:760px){.mbar:not(:has(a:nth-child(4))) a{flex:1 1 0}}
 
 /* large text settings: headings break rather than push the page wider than the screen */
 h1,h2,h3,h4{overflow-wrap:anywhere}

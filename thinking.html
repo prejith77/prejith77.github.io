@@ -2,7 +2,7 @@
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>How I think | Prejith Varghese Ponnachan</title>
 <meta name="description" content="Five short exercises based on decisions I make in demand planning and procurement. The numbers are made up.">
 <link rel="canonical" href="https://prejith77.github.io/thinking.html">
@@ -89,7 +89,7 @@
   --ink:#0A090D;--ink-2:#121017;--ivory:#EDE9E2;--muted:#8E8899;--gold-soft:#E3C77E;--violet-soft:#B9A3F2;
   --ok:#6FCF97;--bad:#F07167;
   --sans:"Inter Tight",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
-  --pad:clamp(96px,14vw,180px);--gut:clamp(20px,4vw,56px);
+  --pad:clamp(72px,14vw,180px);--gut:clamp(20px,4vw,56px);
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -106,7 +106,7 @@ img{max-width:100%;display:block}
 :focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 .skip{position:absolute;left:-9999px;top:12px;z-index:999;background:var(--text);color:var(--bg);padding:12px 16px;border-radius:8px}
 .skip:focus{left:12px}
-.wrap{width:100%;max-width:1480px;margin:0 auto;padding:0 var(--gut)}
+.wrap{width:100%;max-width:1480px;margin:0 auto;padding:0 max(var(--gut),env(safe-area-inset-right,0px)) 0 max(var(--gut),env(safe-area-inset-left,0px))}
 
 /* ---------- nav ---------- */
 .nav{position:fixed;inset:0 0 auto 0;z-index:100;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
@@ -116,12 +116,12 @@ img{max-width:100%;display:block}
 .brand sup{font-size:.55em;color:var(--gold);margin-left:2px}
 .links{display:flex;gap:8px;align-items:center}
 .links a{position:relative;text-decoration:none;font:500 .92rem var(--sans);padding:8px 16px;border-radius:999px;transition:background .3s}
-.links a:hover{background:rgba(237,233,226,.07)}
+@media (hover:hover) and (pointer:fine){.links a:hover{background:rgba(237,233,226,.07)}}
 .nav-right{display:flex;align-items:center;gap:20px}
 .clock{font:500 14px var(--sans);color:var(--dim)}
 .clock b{color:var(--text);font-weight:500}
 .nav .cta-pill{background:var(--gold2);color:var(--bg);padding:12px 20px}
-.nav .cta-pill:hover{background:#BBA4F5}
+@media (hover:hover) and (pointer:fine){.nav .cta-pill:hover{background:#BBA4F5}}
 .nav-bg{position:absolute;inset:0;z-index:-1;background:rgba(10,9,13,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);opacity:0;transition:opacity .4s}
 .nav.solid .nav-bg{opacity:1}
 .menu-btn{display:none;background:var(--bg3);border:0;color:var(--text);border-radius:999px;padding:12px 20px;min-height:44px;font:500 .9rem var(--sans);cursor:pointer}
@@ -142,11 +142,11 @@ img{max-width:100%;display:block}
 .btn{display:inline-flex;align-items:center;gap:12px;border-radius:999px;padding:16px 20px 16px 28px;font:500 1rem var(--sans);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .3s,color .3s,border-color .3s}
 .btn:active{transform:scale(.97)}
 .btn-primary{background:var(--gold2);color:var(--bg)}
-.btn-primary:hover{background:#EFD99A}
+@media (hover:hover) and (pointer:fine){.btn-primary:hover{background:#EFD99A}}
 .btn-primary::after{content:"";display:block;width:28px;height:28px;border-radius:50%;background:var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 11.5l7-7M6 4.5h5.5V10' fill='none' stroke='%23E3C77E' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat;color:var(--gold2);font-size:.85rem;transition:transform .4s}
-.btn-primary:hover::after{transform:rotate(45deg)}
+@media (hover:hover) and (pointer:fine){.btn-primary:hover::after{transform:rotate(45deg)}}
 .btn-secondary{background:var(--bg3);color:var(--text);padding-right:28px}
-.btn-secondary:hover{background:var(--bg4)}
+@media (hover:hover) and (pointer:fine){.btn-secondary:hover{background:var(--bg4)}}
 
 /* ---------- reveal helpers ---------- */
 .ln{display:block;overflow:hidden;padding:0 .06em .04em;margin:0 -.06em -.04em}
@@ -170,7 +170,7 @@ section{position:relative}
 .foot{padding:28px 0 36px}
 .foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:.88rem;color:var(--dim)}
 .foot a{text-decoration:none;display:inline-block;padding:12px 0}
-.foot a:hover{color:var(--text)}
+@media (hover:hover) and (pointer:fine){.foot a:hover{color:var(--text)}}
 
 /* ---------- page ---------- */
 .t-hero{padding:180px 0 92px;position:relative;overflow:hidden}
@@ -187,19 +187,19 @@ section{position:relative}
 .tile b{font:600 var(--fs-h4)/1 var(--sans);letter-spacing:-.03em}
 .tile span{color:#C2BCCB;font-size:var(--fs-body);line-height:1.5;max-width:40ch}
 .tile i{font-style:normal;font-size:var(--fs-quote);color:var(--text2);justify-self:end;transition:transform .5s,color .45s}
-.tile:hover::before,.tile:focus-visible::before{transform:none}
-.tile:hover>*,.tile:focus-visible>*{color:var(--text)}
-.tile:hover i{transform:rotate(45deg)}
+.tile:focus-visible::before{transform:none}@media (hover:hover) and (pointer:fine){.tile:hover::before{transform:none}}
+.tile:focus-visible>*{color:var(--text)}@media (hover:hover) and (pointer:fine){.tile:hover>*{color:var(--text)}}
+@media (hover:hover) and (pointer:fine){.tile:hover i{transform:rotate(45deg)}}
 .tile .tg{width:76px;height:auto;color:var(--gold2);overflow:visible}
 .tile .tg *{stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
 .tile .tg .f{fill:currentColor}
 .tile .tg .nd{stroke-dasharray:3 4}
 .tile .tg [pathLength]{stroke-dasharray:1;stroke-dashoffset:0}
-.tile:hover .tg{color:var(--gold2)}
-.tile:hover .tg [pathLength]{animation:tg .9s cubic-bezier(.16,1,.3,1) both}
+@media (hover:hover) and (pointer:fine){.tile:hover .tg{color:var(--gold2)}}
+@media (hover:hover) and (pointer:fine){.tile:hover .tg [pathLength]{animation:tg .9s cubic-bezier(.16,1,.3,1) both}}
 @keyframes tg{from{stroke-dashoffset:1}}
-@media (prefers-reduced-motion:reduce){.tile:hover .tg [pathLength]{animation:none}}
-@media (max-width:980px){.tile{grid-template-columns:56px minmax(0,1fr) 24px;gap:8px 20px;padding:24px 4px}.tile .tg{width:52px;grid-row:span 2}.tile b{grid-column:2}.tile span{grid-column:2;grid-row:2}.tile i{grid-column:3;grid-row:1}.tile::before{display:none}.tile:hover>*{color:inherit}.tile:hover span{color:#C2BCCB}.tile:hover i,.tile:hover .tg{color:var(--gold2)}}
+@media (prefers-reduced-motion:reduce){@media (hover:hover) and (pointer:fine){.tile:hover .tg [pathLength]{animation:none}}}
+@media (max-width:980px){.tile{grid-template-columns:56px minmax(0,1fr) 24px;gap:8px 20px;padding:24px 4px}.tile .tg{width:52px;grid-row:span 2}.tile b{grid-column:2}.tile span{grid-column:2;grid-row:2}.tile i{grid-column:3;grid-row:1}.tile::before{display:none}@media (hover:hover) and (pointer:fine){.tile:hover>*{color:inherit}}@media (hover:hover) and (pointer:fine){.tile:hover span{color:#C2BCCB}}@media (hover:hover) and (pointer:fine){.tile:hover i,.tile:hover .tg{color:var(--gold2)}}}
 @media (min-width:981px){.tiles{margin-left:-28px;margin-right:-28px}}
 @media (max-width:900px){.t-intro{grid-template-columns:1fr;gap:20px}}
 
@@ -219,9 +219,9 @@ section{position:relative}
 .p-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:24px}
 .chipx{font:500 13px var(--sans);letter-spacing:0;text-transform:none;padding:8px 12px;border-radius:999px;border:1px solid rgba(237,233,226,.2);color:var(--dim)}
 .mini{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid rgba(237,233,226,.25);color:var(--text);border-radius:999px;padding:12px 20px;font:500 .9rem var(--sans);cursor:pointer;transition:border-color .3s,background .3s}
-.mini:hover{border-color:var(--text)}
+@media (hover:hover) and (pointer:fine){.mini:hover{border-color:var(--text)}}
 .mini.solid{background:var(--text);color:var(--bg);border-color:var(--text)}
-.mini.solid:hover{background:var(--gold2);border-color:var(--gold2)}
+@media (hover:hover) and (pointer:fine){.mini.solid:hover{background:var(--gold2);border-color:var(--gold2)}}
 .mini[disabled]{opacity:.35;pointer-events:none}
 .result{margin-top:28px}
 .result .big{font:600 clamp(1.4rem,2.4vw,2rem)/1.15 var(--sans);letter-spacing:-.03em}
@@ -234,7 +234,7 @@ section{position:relative}
 /* 01 showdown */
 .sups{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .sup{border:1px solid var(--line);border-radius:18px;padding:20px;background:rgba(10,9,13,.5);display:flex;flex-direction:column;gap:12px;transition:border-color .3s,transform .4s cubic-bezier(.16,1,.3,1)}
-.sup:hover{border-color:rgba(237,233,226,.3);transform:translateY(-3px)}
+@media (hover:hover) and (pointer:fine){.sup:hover{border-color:rgba(237,233,226,.3);transform:translateY(-3px)}}
 .sup.picked{border-color:var(--gold)}
 .sup .tagl{font:500 13px var(--sans);letter-spacing:0;text-transform:none;color:var(--gold)}
 .sup b{font:600 1.1rem var(--sans)}
@@ -278,7 +278,7 @@ section{position:relative}
 .budget.over i{background:#F07167}
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .pcard{text-align:left;border:1px solid var(--line);border-radius:14px;padding:16px;background:rgba(10,9,13,.5);color:var(--text);font:inherit;cursor:pointer;display:flex;flex-direction:column;gap:8px;transition:border-color .3s,background .3s,transform .3s}
-.pcard:hover{border-color:rgba(237,233,226,.3)}
+@media (hover:hover) and (pointer:fine){.pcard:hover{border-color:rgba(237,233,226,.3)}}
 .pcard[aria-pressed="true"]{border-color:var(--gold);background:rgba(201,162,74,.08);transform:translateY(-2px)}
 .pcard b{font:600 .98rem/1.2 var(--sans)}
 .pcard span{font-size:.76rem;color:var(--dim);line-height:1.35}
@@ -316,7 +316,7 @@ section{position:relative}
 .event h3{font:600 clamp(1.3rem,2.2vw,1.8rem)/1.2 var(--sans);letter-spacing:-.025em;margin:8px 0 16px}
 .opts{display:grid;gap:8px}
 .opt{text-align:left;border:1px solid var(--line);border-radius:12px;padding:16px 16px;background:rgba(10,9,13,.6);color:var(--text);font:500 .95rem var(--sans);cursor:pointer;transition:border-color .3s,background .3s}
-.opt:hover{border-color:var(--text)}
+@media (hover:hover) and (pointer:fine){.opt:hover{border-color:var(--text)}}
 .outcome{margin-top:16px;color:var(--text2)}
 @media (max-width:700px){.q-meters{grid-template-columns:1fr 1fr}}
 
